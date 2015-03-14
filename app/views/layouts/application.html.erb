@@ -7,6 +7,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <ul id="navigation">
+    <li><%= link_to "Index", :controller => 'welcome', :action => 'index' %></li>
+    <li><%= link_to "New Disclosure",
+            :controller => 'disclosures', :action => 'new' %></li>
+    <li><%= link_to "Disclosures",
+            :controller => 'disclosures', :action => 'index' %></li>
+    <li><%= link_to "FAQ",
+            :controller => 'faq', :action => 'index' %></li>
+    <!-- 
+    <li>'devise/registration', :action => 'edit' </li>
+    -->
+    <li>
+  </ul>
 
 <%= yield %>
 
