@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @disclosure.title %>
+</p>
+
+<p>
+  <strong>Abstract:</strong>
+  <%= @disclosure.abstract %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @disclosure.body %>
+</p>
+
+<p>
+  <strong>Consented:</strong>
+  <%= @disclosure.consented %>
+</p>
+
+<%= link_to 'Edit', edit_disclosure_path(@disclosure) %> |
+<%= link_to 'Back', disclosures_path %>

@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Disclosures</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Abstract</th>
+      <th>Body</th>
+      <th>Consented</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @disclosures.each do |disclosure| %>
+      <tr>
+        <td><%= disclosure.title %></td>
+        <td><%= disclosure.abstract %></td>
+        <td><%= disclosure.body %></td>
+        <td><%= disclosure.consented %></td>
+        <td><%= link_to 'Show', disclosure %></td>
+        <td><%= link_to 'Edit', edit_disclosure_path(disclosure) %></td>
+        <td><%= link_to 'Destroy', disclosure, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Disclosure', new_disclosure_path %>
