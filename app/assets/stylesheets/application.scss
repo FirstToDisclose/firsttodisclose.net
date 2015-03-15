@@ -10,23 +10,14 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require_self
+ 
  */
+
+ @import "bootstrap-sprockets";
+@import "bootstrap";
 
 body {
     background: #def;
 }
 
-ul#navigation {
-  list-style: none;
-}
 
-ul#navigation > li {
-    float: left;
-    margin: 10px; 
-}
-
-ul#navigation:after {
-    content: ""; clear: both; display: block;
-}

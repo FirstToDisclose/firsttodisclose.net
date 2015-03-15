@@ -7,19 +7,47 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <ul id="navigation">
-    <li><%= link_to "Index", :controller => 'welcome', :action => 'index' %></li>
-    <li><%= link_to "New Disclosure",
-            :controller => 'disclosures', :action => 'new' %></li>
-    <li><%= link_to "Disclosures",
-            :controller => 'disclosures', :action => 'index' %></li>
-    <li><%= link_to "FAQ",
-            :controller => 'faq', :action => 'index' %></li>
-    <!-- 
-    <li>'devise/registration', :action => 'edit' </li>
-    -->
-    <li>
-  </ul>
+	<nav class="navbar navbar-default">
+	    <div class="container-fluid">
+	        <div class="navbar-header">
+		        <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+	                <span class="sr-only">Toggle navigation</span>
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+	            </button> 
+	            <%= link_to "First to Disclose", {:controller => 'welcome', :action => 'index'}, :class => 'navbar-brand'%>
+            </div>
+            	<div id="navbarCollapse" class="navbar-collapse collapse">
+			    <ul class="nav navbar-nav">
+			    	
+				    <li><%= link_to "New Disclosure",
+				            {:controller => 'disclosures', :action => 'new'} %></li>
+				    <li><%= link_to "Disclosures",
+				            {:controller => 'disclosures', :action => 'index'} %></li>
+				    <li><%= link_to "FAQ",
+				            {:controller => 'faq', :action => 'index'} %></li>
+				    <!-- 
+				    <li>'devise/registration', :action => 'edit' </li>
+				    -->
+			  	</ul>
+				 <ul class="nav navbar-nav navbar-right">
+	                <li><a href="">Login</a></li>
+	              </ul>
+			  </div>
+	   	</div>
+	</nav> 
+
+  
+            
+            
+
+
+          
+          
+            
+            
+       
 
 <%= yield %>
 
