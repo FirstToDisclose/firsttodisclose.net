@@ -1,53 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>FirsttodiscloseNet</title>
+  <title>First to Disclose</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<nav class="navbar navbar-default">
-	    <div class="container-fluid">
-	        <div class="navbar-header">
-		        <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
-	                <span class="sr-only">Toggle navigation</span>
-	                <span class="icon-bar"></span>
-	                <span class="icon-bar"></span>
-	                <span class="icon-bar"></span>
-	            </button> 
-	            <%= link_to "First to Disclose", {:controller => 'welcome', :action => 'index'}, :class => 'navbar-brand'%>
-            </div>
-            	<div id="navbarCollapse" class="navbar-collapse collapse">
-			    <ul class="nav navbar-nav">
-			    	
-				    <li><%= link_to "New Disclosure",
-				            {:controller => 'disclosures', :action => 'new'} %></li>
-				    <li><%= link_to "Disclosures",
-				            {:controller => 'disclosures', :action => 'index'} %></li>
-				    <li><%= link_to "FAQ",
-				            {:controller => 'faq', :action => 'index'} %></li>
-				    <!-- 
-				    <li>'devise/registration', :action => 'edit' </li>
-				    -->
-			  	</ul>
-				 <ul class="nav navbar-nav navbar-right">
-	                <li><a href="">Login</a></li>
-	              </ul>
-			  </div>
-	   	</div>
-	</nav> 
-
-  
-            
-            
-
-
-          
-          
-            
-            
-       
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+	<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+	  <span class="sr-only">Toggle navigation</span>
+	  <span class="icon-bar"></span>
+	  <span class="icon-bar"></span>
+	  <span class="icon-bar"></span>
+	</button> 
+	<%= link_to "First to Disclose", {:controller => 'welcome', :action => 'index'}, :class => 'navbar-brand'%>
+      </div>
+      <div id="navbarCollapse" class="navbar-collapse collapse">
+	<ul class="nav navbar-nav">
+	  <li><%= link_to "New Disclosure",
+		  {:controller => 'disclosures', :action => 'new'} %></li>
+	  <li><%= link_to "Disclosures",
+		  {:controller => 'disclosures', :action => 'index'} %></li>
+	  <li><%= link_to "FAQ",
+		  {:controller => 'faq', :action => 'index'} %></li>
+	</ul>
+	<ul class="nav navbar-nav navbar-right">
+	  <li><a href="#devise/registration:edit">Login</a></li>
+	</ul>
+      </div>
+    </div>
+  </nav> 
 
 <%= yield %>
 
