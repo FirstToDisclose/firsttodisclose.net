@@ -1,3 +1,5 @@
+Note: must use application.scss only in order for our Sass-Bootstrap gem to work. Some scaffolding/auto-generation will create application.css. This will cause bootstrap to be ignored. Stick with application.scss for now.
+
 == README
 
 This README would normally document whatever steps are necessary to get the
