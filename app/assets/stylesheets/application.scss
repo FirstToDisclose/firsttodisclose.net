@@ -13,11 +13,29 @@
  
  */
 
- @import "bootstrap-sprockets";
+@import "bootstrap-sprockets";
 @import "bootstrap";
 
+$primary-color: #0c5aa6;
+$secondary-color: #2219b2;
+$tertiary-color: #00ab6f;
+$quaternary-color: #ff9700;
+
+
 body {
-    background: #def;
+    background: #fff;
 }
 
+.navbar {
+    background: $primary-color;
+    .navbar-nav {
+        a:link, a:visited {
+            color: #fff;
+        }
+        a:hover, a:active {
+            text-decoration: underline;
+            color: #fff;
+        }
+    }
+}
 
