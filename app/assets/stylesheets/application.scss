@@ -26,16 +26,3 @@ body {
     background: #fff;
 }
 
-.navbar {
-    background: $primary-color;
-    .navbar-nav {
-        a:link, a:visited {
-            color: #fff;
-        }
-        a:hover, a:active {
-            text-decoration: underline;
-            color: #fff;
-        }
-    }
-}
-
