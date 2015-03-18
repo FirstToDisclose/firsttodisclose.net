@@ -1,6 +1,6 @@
-class CreateTagTable < ActiveRecord::Migration
+class CreateTags < ActiveRecord::Migration
   def change
-    create_table :tag_tables do |t|
+    create_table :tags do |t|
       t.string "name", null: false
 
       t.timestamps
