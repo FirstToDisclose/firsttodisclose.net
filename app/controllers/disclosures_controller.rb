@@ -15,6 +15,8 @@ class DisclosuresController < ApplicationController
   # GET /disclosures/new
   def new
     @disclosure = Disclosure.new
+    @tags = Tag.all
+
   end
 
   # GET /disclosures/1/edit
@@ -25,6 +27,7 @@ class DisclosuresController < ApplicationController
   # POST /disclosures.json
   def create
     @disclosure = Disclosure.new(disclosure_params)
+    @disclosure.create_tags(disclosure_tag_params)
 
     respond_to do |format|
       if @disclosure.save
@@ -70,5 +73,9 @@ class DisclosuresController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def disclosure_params
       params.require(:disclosure).permit(:title, :abstract, :body, :consented)
+    end
+
+    def disclosure_tag_params
+      params.require(:disclosure_tag).permit(:tag_id)
     end
 end

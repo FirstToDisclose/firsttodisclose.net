@@ -11,5 +11,4 @@ class TagTest < ActiveSupport::TestCase
     tag = Tag.create(name: "Invention")
     assert tag.save
   end
-
 end
