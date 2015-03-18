@@ -27,7 +27,8 @@ class DisclosuresController < ApplicationController
   # POST /disclosures.json
   def create
     @disclosure = Disclosure.new(disclosure_params)
-    @disclosure.create_tags(disclosure_tag_params)
+    binding.pry
+    @disclosure.create_tags(disclosure_params)
 
     respond_to do |format|
       if @disclosure.save
@@ -72,10 +73,10 @@ class DisclosuresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def disclosure_params
-      params.require(:disclosure).permit(:title, :abstract, :body, :consented)
+      params.require(:disclosure).permit(:title, :abstract, :body, :consented, :disclosure_tags)
     end
 
     def disclosure_tag_params
-      params.require(:disclosure_tag).permit(:tag_id)
+      params.require(:disclosure_tags)
     end
 end
