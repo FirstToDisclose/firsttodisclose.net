@@ -32,8 +32,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+#bootstrap
 gem 'bootstrap-sass', '~> 3.3.3'
 
+#for web fonts
+gem 'google-webfonts-rails', '~> 0.0.4'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
