@@ -2,6 +2,11 @@ class Disclosure < ActiveRecord::Base
   has_many :disclosure_tags
   has_many :tags, through: :disclosure_tags
 
+  validates :title, presence: true
+  validates :abstract, presence: true
+  validates :body, presence: true
+  validates :consented, acceptance: true
+
   def create_tags(params)
     if params
       params.each do |tag|
