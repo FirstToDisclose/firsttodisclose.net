@@ -13,15 +13,15 @@
 
 ActiveRecord::Schema.define(version: 20150318004201) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "disclosure_tags", force: :cascade do |t|
     t.integer  "disclosure_id"
     t.integer  "tag_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
 
   create_table "disclosures", force: :cascade do |t|
     t.string   "title"
