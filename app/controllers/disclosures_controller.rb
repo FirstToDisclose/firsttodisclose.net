@@ -15,6 +15,8 @@ class DisclosuresController < ApplicationController
   # GET /disclosures/new
   def new
     @disclosure = Disclosure.new
+    @tags = Tag.all
+
   end
 
   # GET /disclosures/1/edit
@@ -25,9 +27,8 @@ class DisclosuresController < ApplicationController
   # POST /disclosures.json
   def create
     @disclosure = Disclosure.new(disclosure_params)
-
     respond_to do |format|
-      if @disclosure.save
+      if @disclosure.save && @disclosure.create_tags(params["disclosure"]["disclosure_tags"])
         format.html { redirect_to @disclosure, notice: 'Disclosure was successfully created.' }
         format.json { render :show, status: :created, location: @disclosure }
       else
