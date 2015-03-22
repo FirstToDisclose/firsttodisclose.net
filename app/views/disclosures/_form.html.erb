@@ -30,7 +30,7 @@
 
   <div class="field">
     <%= f.fields_for :disclosure_tags do |field|%>
-      <% @tags.each do |tag| %>
+      <% Tag.all.each do |tag| %>
         <%= field.label tag.name %><br>
         <%= field.check_box tag.name, {class: 'form-control'}, tag.id, nil %>
       <% end %>

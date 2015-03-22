@@ -15,8 +15,6 @@ class DisclosuresController < ApplicationController
   # GET /disclosures/new
   def new
     @disclosure = Disclosure.new
-    @tags = Tag.all
-
   end
 
   # GET /disclosures/1/edit
