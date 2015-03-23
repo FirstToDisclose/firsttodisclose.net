@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Title:</strong>
   <%= @disclosure.title %>
@@ -19,6 +17,15 @@
   <strong>Consented:</strong>
   <%= @disclosure.consented %>
 </p>
+
+<% if @disclosure.tags.any? %>
+  <p>
+    <strong>Tags:</strong>
+    <% @disclosure.tags.each do |tag| %>
+      <div><%= link_to tag.name, tag_path(tag) %></div>
+    <% end %>
+  </p>
+<% end %>
 
 <%= link_to 'Edit', edit_disclosure_path(@disclosure) %> |
 <%= link_to 'Back', disclosures_path %>

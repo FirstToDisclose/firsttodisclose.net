@@ -10,13 +10,16 @@ class DisclosuresController < ApplicationController
   # GET /disclosures/1
   # GET /disclosures/1.json
   def show
+    @disclosure = Disclosure.find(params[:id])
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @disclosure }
+    end
   end
 
   # GET /disclosures/new
   def new
     @disclosure = Disclosure.new
-    @tags = Tag.all
-
   end
 
   # GET /disclosures/1/edit
@@ -30,7 +33,7 @@ class DisclosuresController < ApplicationController
     respond_to do |format|
       if @disclosure.save && @disclosure.create_tags(params["disclosure"]["disclosure_tags"])
         format.html { redirect_to @disclosure, notice: 'Disclosure was successfully created.' }
-        format.json { render :show, status: :created, location: @disclosure }
+        format.json { render json: @disclosure, status: :created, location: disclosure_path(@disclosure) }
       else
         format.html { render :new }
         format.json { render json: @disclosure.errors, status: :unprocessable_entity }
@@ -44,7 +47,7 @@ class DisclosuresController < ApplicationController
     respond_to do |format|
       if @disclosure.update(disclosure_params)
         format.html { redirect_to @disclosure, notice: 'Disclosure was successfully updated.' }
-        format.json { render :show, status: :ok, location: @disclosure }
+        format.json { head :no_content }
       else
         format.html { render :edit }
         format.json { render json: @disclosure.errors, status: :unprocessable_entity }
