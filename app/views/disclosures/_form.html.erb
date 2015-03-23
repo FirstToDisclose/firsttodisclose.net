@@ -37,7 +37,7 @@
   </div>
 <% end %>
 
-<input name="tags" id="tags" value= "<%= @disclosure.tags.join ", " %>" />
+<input data-role="tagsinput" />
 
 
 <script>
@@ -53,17 +53,17 @@
 
   $('#tags').tagsInput();
 
-  $("#tags").keydown(function(event){
-    if (event.keyCode === 13){
-      event.preventDefault();
-      //$(this).addTag("Joe");
-      $('#tags').addTag('foo');
-      console.log($(this).val());
-    }
+  // $("#tags").keydown(function(event){
+  //   if (event.keyCode === 13){
+  //     event.preventDefault();
+  //     //$(this).addTag("Joe");
+  //     $('#tags').addTag('foo');
+  //     console.log($(this).val());
+  //   }
 
 
-    console.log(event.keyCode);
-  });
+  //  console.log(event.keyCode);
+  //});
 
 
 
