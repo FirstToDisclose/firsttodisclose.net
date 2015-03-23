@@ -1,0 +1,7 @@
+<h2>Browse Disclosures by Tag</h2>
+
+<% @tags.each do |tag| %>
+  <div>
+    <%= link_to tag.name, tag_path(tag) %>
+  </div>
+<% end %>

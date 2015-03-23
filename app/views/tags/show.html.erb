@@ -1,0 +1,9 @@
+<h2>Tag: <%= @tag.name %></h2>
+
+<% if @tag.disclosures.any? %>
+  <% @tag.disclosures.each do |disclosure| %>
+    <p>
+      <%= link_to disclosure.title, disclosure_path(disclosure) %>
+    </p>
+  <% end %>
+<% end %>
