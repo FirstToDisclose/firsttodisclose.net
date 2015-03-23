@@ -29,15 +29,45 @@
   </div>
 
   <div class="field">
-    <%= f.fields_for :disclosure_tags do |field|%>
-      <% Tag.all.each do |tag| %>
-        <%= field.label tag.name %><br>
-        <%= field.check_box tag.name, {class: 'form-control'}, tag.id, nil %>
-      <% end %>
-    <% end %>
   </div>
+
 
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+<input name="tags" id="tags" value= "<%= @disclosure.tags.join ", " %>" />
+
+
+<script>
+
+// Prevent default
+
+
+
+
+
+
+  // $('#tags').addTag(submitted);
+
+  $('#tags').tagsInput();
+
+  $("#tags").keydown(function(event){
+    if (event.keyCode === 13){
+      event.preventDefault();
+      //$(this).addTag("Joe");
+      $('#tags').addTag('foo');
+      console.log($(this).val());
+    }
+
+
+    console.log(event.keyCode);
+  });
+
+
+
+  // $('#tags').tagsInput({
+  //   autocomplete_url:'http://myserver.com/api/autocomplete'
+  // });
+</script>
