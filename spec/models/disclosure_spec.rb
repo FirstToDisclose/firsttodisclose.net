@@ -19,7 +19,7 @@ describe Disclosure do
     it { should validate_presence_of :abstract }
     it { should ensure_length_of(:abstract).is_at_least(200) }
     it { should ensure_length_of(:abstract).is_at_most(1000) }
-    it { should validate_acceptance_of :consented }
+    it { should validate_presence_of :consented }
   end
 
   describe "associations" do
