@@ -10,8 +10,10 @@ class DisclosuresController < ApplicationController
   # GET /disclosures/1
   # GET /disclosures/1.json
   def show
+    @disclosure = Disclosure.find(params[:id])
     respond_to do |format|
-      format.json { render json: Disclosure.find(params[:id]) }
+      format.html { render :show }
+      format.json { render json: @disclosure }
     end
   end
 
