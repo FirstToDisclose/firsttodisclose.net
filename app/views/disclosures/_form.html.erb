@@ -28,6 +28,8 @@
     <%= f.check_box :consented, :class => 'form-control' %>
   </div>
 
+  <input data-role="tagsinput"/>
+
   <div class="field">
     <%= f.fields_for :disclosure_tags do |field|%>
       <% Tag.all.each do |tag| %>
@@ -41,3 +43,8 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+<script>
+  var input = $("input").tagsinput('items');
+  console.log(input);
+</script>
