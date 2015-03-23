@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20150323023855) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "disclosures", ["title"], name: "index_disclosures_on_title"
+  add_index "disclosures", ["title"], name: "index_disclosures_on_title", using: :btree
 
   create_table "tags", force: :cascade do |t|
     t.string   "name",       null: false
