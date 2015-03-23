@@ -22,7 +22,7 @@
   <p>
     <strong>Tags:</strong>
     <% @disclosure.tags.each do |tag| %>
-      <div><%= tag.name %></div>
+      <div><%= link_to tag.name, tag_path(tag) %></div>
     <% end %>
   </p>
 <% end %>

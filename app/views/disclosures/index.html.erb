@@ -14,7 +14,7 @@
   <tbody>
     <% @disclosures.each do |disclosure| %>
       <tr>
-        <td><%= disclosure.title %></td>
+        <td><%= link_to disclosure.title, disclosure_path(disclosure) %></td>
         <td><%= disclosure.abstract %></td>
         <td><%= disclosure.body %></td>
         <td><%= disclosure.consented %></td>
