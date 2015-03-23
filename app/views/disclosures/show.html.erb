@@ -18,5 +18,14 @@
   <%= @disclosure.consented %>
 </p>
 
+<% if @disclosure.tags.any? %>
+  <p>
+    <strong>Tags:</strong>
+    <% @disclosure.tags.each do |tag| %>
+      <div><%= tag.name %></div>
+    <% end %>
+  </p>
+<% end %>
+
 <%= link_to 'Edit', edit_disclosure_path(@disclosure) %> |
 <%= link_to 'Back', disclosures_path %>
