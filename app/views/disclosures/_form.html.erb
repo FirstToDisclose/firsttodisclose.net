@@ -45,6 +45,8 @@
 <% end %>
 
 <script>
-  var input = $("input").tagsinput('items');
-  console.log(input);
+$('input').on('itemAdded', function(event) {
+  console.log(event.item);
+});
+
 </script>
