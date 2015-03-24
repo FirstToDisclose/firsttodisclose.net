@@ -30,14 +30,14 @@
 
   <input data-role="tagsinput"/>
 
-  <div class="field">
+  <!-- <div class="field">
     <%= f.fields_for :disclosure_tags do |field|%>
       <% Tag.all.each do |tag| %>
         <%= field.label tag.name %><br>
         <%= field.check_box tag.name, {class: 'form-control'}, tag.id, nil %>
       <% end %>
     <% end %>
-  </div>
+  </div> -->
 
   <div class="actions">
     <%= f.submit %>
@@ -45,8 +45,20 @@
 <% end %>
 
 <script>
+
+var tagArray = [];
+
 $('input').on('itemAdded', function(event) {
-  console.log(event.item);
+  tagArray.push(event.item);
 });
+
+$('input[name=commit]').click(function(){
+  console.log("test");
+});
+
+
+
+
+
 
 </script>
