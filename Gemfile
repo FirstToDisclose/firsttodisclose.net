@@ -32,3 +32,7 @@ group :test do
   gem 'shoulda-matchers'
   gem 'valid_attribute'
 end
+
+group :production do
+  gem 'rails_12factor'
+end
