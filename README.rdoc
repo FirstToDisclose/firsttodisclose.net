@@ -1,15 +1,8 @@
-Note: must use application.scss only in order for our Sass-Bootstrap gem to work. Some scaffolding/auto-generation will create application.css. This will cause bootstrap to be ignored. Stick with application.scss for now.
-
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby version: 2.x
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
+* System dependencies: Postgres
 
 * Configuration
 
@@ -17,14 +10,14 @@ Things you may want to cover:
 
 * Database initialization
 
+`rake db:create`
+
 * How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+`rake`
 
 * Deployment instructions
 
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+`heroku login`
+`git push heroku master`
+`heroku run rake db:migrate`
