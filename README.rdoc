@@ -1,12 +1,12 @@
-== README
+== First to Disclose
+
+FirstToDisclose.net is a community-powered online repository for inventors to disclose their inventions and other innovations to the public.
+
+== Setup
 
 * Ruby version: 2.x
 
 * System dependencies: Postgres
-
-* Configuration
-
-* Database creation
 
 * Database initialization
 
@@ -21,3 +21,7 @@
 `heroku login`
 `git push heroku master`
 `heroku run rake db:migrate`
+
+== About
+
+{<img src="https://codeclimate.com/github/FirstToDisclose/firsttodisclose.net/badges/gpa.svg" />}[https://codeclimate.com/github/FirstToDisclose/firsttodisclose.net]
