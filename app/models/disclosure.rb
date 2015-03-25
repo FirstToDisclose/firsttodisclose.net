@@ -8,13 +8,15 @@ class Disclosure < ActiveRecord::Base
   validates :consented, presence: true # presence validaiton used for booleans
 
   def create_tags(params)
-    if params
-      params.each do |tag|
-        self.disclosure_tags.create(tag_id: tag[1])
+    tags = params[:disclosure][:disclosure_tags].split(",")
+    # Create tag and disclosure tag
+    tags.each do |tag_name|
+      tag = Tag.find_or_create_by(name: tag_name)
+      disclosure_tag = DisclosureTag.create(tag: tag, disclosure: self)
+      if !tag.save || !disclosure_tag.save
+        return false
       end
-      self.disclosure_tags.all? { |tag| tag.save }
-    else
-      true # returns true if there are no tags to save
     end
+    true
   end
 end
