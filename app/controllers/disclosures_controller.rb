@@ -31,7 +31,7 @@ class DisclosuresController < ApplicationController
   def create
     @disclosure = Disclosure.new(disclosure_params)
     respond_to do |format|
-      if @disclosure.save && @disclosure.create_tags(params["disclosure"]["disclosure_tags"])
+      if @disclosure.save && @disclosure.create_tags(params)
         format.html { redirect_to @disclosure, notice: 'Disclosure was successfully created.' }
         format.json { render json: @disclosure, status: :created, location: disclosure_path(@disclosure) }
       else

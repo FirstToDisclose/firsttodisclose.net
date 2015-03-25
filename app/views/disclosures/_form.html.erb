@@ -28,16 +28,42 @@
     <%= f.check_box :consented, :class => 'form-control' %>
   </div>
 
-  <div class="field">
+  <%= f.hidden_field :disclosure_tags, id: "hidden-tag-field" %>
+
+
+  <input data-role="tagsinput" id="tags"/>
+
+
+
+  <!-- <div class="field">
     <%= f.fields_for :disclosure_tags do |field|%>
       <% Tag.all.each do |tag| %>
         <%= field.label tag.name %><br>
-        <%= field.check_box tag.name, {class: 'form-control'}, tag.id, nil %>
+        <%= field.check_box tag.name tag.id, nil %>
       <% end %>
     <% end %>
-  </div>
+  </div> -->
 
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+<script>
+
+// Helper function for updating value of tags
+function updateTagList(){
+    var taglist = $('#tags').tagsinput('items');
+    // Find hidden field
+    $('#hidden-tag-field').val(taglist);
+}
+
+$('input').on('itemAdded', function() {
+  updateTagList();
+});
+
+$('input').on('itemRemoved', function() {
+  updateTagList();
+});
+
+</script>
