@@ -22,6 +22,9 @@ FirstToDisclose.net is a community-powered online repository for inventors to di
 `git push heroku master`
 `heroku run rake db:migrate`
 
+  heroku config:add FB_ID=${FB_ID} --remote test
+  heroku config:add FB_SECRET=${FB_SECRET} --remote test
+
 == About
 
 {<img src="https://codeclimate.com/github/FirstToDisclose/firsttodisclose.net/badges/gpa.svg" />}[https://codeclimate.com/github/FirstToDisclose/firsttodisclose.net]
