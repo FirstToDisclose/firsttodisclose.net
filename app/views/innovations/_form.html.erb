@@ -1,10 +1,10 @@
-<%= form_for(@disclosure) do |f| %>
-  <% if @disclosure.errors.any? %>
+<%= form_for(@innovation) do |f| %>
+  <% if @innovation.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@disclosure.errors.count, "error") %> prohibited this disclosure from being saved:</h2>
+      <h2><%= pluralize(@innovation.errors.count, "error") %> prohibited this innovation from being saved:</h2>
 
       <ul>
-      <% @disclosure.errors.full_messages.each do |message| %>
+      <% @innovation.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -32,7 +32,7 @@
     <%= f.check_box :consented, :class => 'form-control' %>
   </div>
 
-  <%= f.hidden_field :disclosure_tags, id: "hidden-tag-field" %>
+  <%= f.hidden_field :innovation_tags, id: "hidden-tag-field" %>
 
 
   <input data-role="tagsinput" id="tags"/>
@@ -40,7 +40,7 @@
 
 
   <!-- <div class="field">
-    <%= f.fields_for :disclosure_tags do |field|%>
+    <%= f.fields_for :innovation_tags do |field|%>
       <% Tag.all.each do |tag| %>
         <%= field.label tag.name %><br>
         <%= field.check_box tag.name tag.id, nil %>
