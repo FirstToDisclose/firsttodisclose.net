@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe Disclosure do
+describe Innovation do
   describe "attributes" do
     it { should respond_to :title }
     it { should respond_to :body }
@@ -23,7 +23,7 @@ describe Disclosure do
   end
 
   describe "associations" do
-    it { should have_many :disclosure_tags }
+    it { should have_many :innovation_tags }
     it { should have_many :tags }
   end
 end
