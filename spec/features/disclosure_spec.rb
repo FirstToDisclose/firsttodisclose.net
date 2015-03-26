@@ -1,53 +1,53 @@
 require "rails_helper"
 
-describe "Disclosures" do
-  feature "creating a disclosure" do
+describe "Innovations" do
+  feature "creating a Innovation" do
     it "accepts valid attributes" do
-      visit new_disclosure_path
+      visit new_innovation_path
 
-      fill_in "Title", with: "My New Valid Disclosure"
-      fill_in "Abstract", with: "This is my disclosure" * 10
-      fill_in "Body", with: "Here is a detailed description of my disclosure" * 30
+      fill_in "Title", with: "My New Valid Innovation"
+      fill_in "Abstract", with: "This is my Innovation" * 10
+      fill_in "Body", with: "Here is a detailed description of my Innovation" * 30
       check "Consented"
-      click_on "Create Disclosure"
+      click_on "Create Innovation"
 
-      expect(page).to have_content "Disclosure was successfully created"
-      expect(page).to have_content "My New Valid Disclosure"
+      expect(page).to have_content "Innovation was successfully created"
+      expect(page).to have_content "My New Valid Innovation"
     end
 
     it "rejects invalid attributes" do
-      visit new_disclosure_path
+      visit new_innovation_path
 
-      click_on "Create Disclosure"
+      click_on "Create Innovation"
 
       expect(page).to have_content "can't be blank"
     end
 
     it "can be tagged" do
       tag = FactoryGirl.create(:tag)
-      visit new_disclosure_path
+      visit new_innovation_path
 
-      fill_in "Title", with: "My New Valid Disclosure"
-      fill_in "Abstract", with: "This is my disclosure" * 10
-      fill_in "Body", with: "Here is a detailed description of my disclosure" * 30
+      fill_in "Title", with: "My New Valid Innovation"
+      fill_in "Abstract", with: "This is my Innovation" * 10
+      fill_in "Body", with: "Here is a detailed description of my Innovation" * 30
       check "Consented"
       check tag.name
-      click_on "Create Disclosure"
+      click_on "Create Innovation"
 
-      expect(page).to have_content "Disclosure was successfully created"
+      expect(page).to have_content "Innovation was successfully created"
       expect(page).to have_link tag.name
     end
   end
 
   feature "index page" do
-    it "has links to each disclosure" do
-      disclosure_1 = FactoryGirl.create(:disclosure)
-      disclosure_2 = FactoryGirl.create(:disclosure)
+    it "has links to each Innovation" do
+      Innovation_1 = FactoryGirl.create(:innovation)
+      Innovation_2 = FactoryGirl.create(:innovation)
 
-      visit disclosures_path
+      visit Innovations_path
 
-      expect(page).to have_link disclosure_1.title
-      expect(page).to have_link disclosure_2.title
+      expect(page).to have_link Innovation_1.title
+      expect(page).to have_link Innovation_2.title
     end
   end
 end

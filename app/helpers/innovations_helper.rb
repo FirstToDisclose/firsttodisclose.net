@@ -1,2 +1,2 @@
-module DisclosuresHelper
+module InnovationsHelper
 end
