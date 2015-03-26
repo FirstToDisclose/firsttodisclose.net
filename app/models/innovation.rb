@@ -12,8 +12,8 @@ class Innovation < ActiveRecord::Base
     # Create tag and Innovation tag
     tags.each do |tag_name|
       tag = Tag.find_or_create_by(name: tag_name)
-      Innovation_tag = InnovationTag.create(tag: tag, innovation: self)
-      if !tag.save || !Innovation_tag.save
+      innovation_tag = InnovationTag.create(tag: tag, innovation: self)
+      if !tag.save || !innovation_tag.save
         return false
       end
     end

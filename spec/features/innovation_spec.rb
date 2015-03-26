@@ -44,7 +44,7 @@ describe "Innovations" do
       Innovation_1 = FactoryGirl.create(:innovation)
       Innovation_2 = FactoryGirl.create(:innovation)
 
-      visit Innovations_path
+      visit innovations_path
 
       expect(page).to have_link Innovation_1.title
       expect(page).to have_link Innovation_2.title
