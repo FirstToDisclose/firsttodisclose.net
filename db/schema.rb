@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150326194156) do
+ActiveRecord::Schema.define(version: 20150326194540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "disclosure_tags", force: :cascade do |t|
-    t.integer  "disclosure_id"
+  create_table "innovation_tags", force: :cascade do |t|
+    t.integer  "innovation_id"
     t.integer  "tag_id"
     t.datetime "created_at"
     t.datetime "updated_at"
