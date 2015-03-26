@@ -1,4 +1,4 @@
-class Disclosure(models.Model):
+class Innovation(models.Model):
 
 
     title = models.CharField(max_length=255)
@@ -10,6 +10,3 @@ class Disclosure(models.Model):
     owner = models.ForeignKey(User)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    
-    
-   
