@@ -11,19 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150323023855) do
+ActiveRecord::Schema.define(version: 20150326194540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "disclosure_tags", force: :cascade do |t|
-    t.integer  "disclosure_id"
+  create_table "innovation_tags", force: :cascade do |t|
+    t.integer  "innovation_id"
     t.integer  "tag_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "disclosures", force: :cascade do |t|
+  create_table "innovations", force: :cascade do |t|
     t.string   "title"
     t.text     "abstract"
     t.text     "body"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20150323023855) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "disclosures", ["title"], name: "index_disclosures_on_title", using: :btree
+  add_index "innovations", ["title"], name: "index_innovations_on_title", using: :btree
 
   create_table "tags", force: :cascade do |t|
     t.string   "name",       null: false

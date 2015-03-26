@@ -1,0 +1,31 @@
+<p>
+  <strong>Title:</strong>
+  <%= @innovation.title %>
+</p>
+
+<p>
+  <strong>Abstract:</strong>
+  <%= @innovation.abstract %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @innovation.body %>
+</p>
+
+<p>
+  <strong>Consented:</strong>
+  <%= @innovation.consented %>
+</p>
+
+<% if @innovation.tags.any? %>
+  <p>
+    <strong>Tags:</strong>
+    <% @innovation.tags.each do |tag| %>
+      <div><%= link_to tag.name, tag_path(tag) %></div>
+    <% end %>
+  </p>
+<% end %>
+
+<%= link_to 'Edit', edit_innovation_path(@innovation) %> |
+<%= link_to 'Back', innovations_path %>

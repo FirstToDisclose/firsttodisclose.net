@@ -2,18 +2,18 @@ require "rails_helper"
 
 describe "Tags" do
   feature "show page" do
-    it "displays associated disclosures" do
+    it "displays associated innovations" do
       tag = FactoryGirl.create(:tag)
-      disclosure_1 = FactoryGirl.create(:disclosure)
-      disclosure_2 = FactoryGirl.create(:disclosure)
-      FactoryGirl.create(:disclosure_tag, tag: tag, disclosure: disclosure_1)
-      FactoryGirl.create(:disclosure_tag, tag: tag, disclosure: disclosure_2)
+      innovation_1 = FactoryGirl.create(:innovation)
+      innovation_2 = FactoryGirl.create(:innovation)
+      FactoryGirl.create(:innovation_tag, tag: tag, innovation: innovation_1)
+      FactoryGirl.create(:innovation_tag, tag: tag, innovation: innovation_2)
 
       visit tag_path(tag)
 
       expect(page).to have_content tag.name
-      expect(page).to have_link disclosure_1.title
-      expect(page).to have_link disclosure_2.title
+      expect(page).to have_link innovation_1.title
+      expect(page).to have_link innovation_2.title
     end
   end
 

@@ -1,8 +1,8 @@
 require "rails_helper"
 
-describe DisclosureTag do
+describe InnovationTag do
   describe "attributes" do
-    it { should respond_to :disclosure_id }
+    it { should respond_to :innovation_id }
     it { should respond_to :tag_id }
   end
 
@@ -10,7 +10,7 @@ describe DisclosureTag do
   end
 
   describe "associations" do
-    it { should belong_to :disclosure }
+    it { should belong_to :innovation }
     it { should belong_to :tag }
   end
 end

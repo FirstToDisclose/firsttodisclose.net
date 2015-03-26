@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :disclosures
+  resources :innovations
   resources :tags, only: [:show, :index]
 
   get 'faq/index'
