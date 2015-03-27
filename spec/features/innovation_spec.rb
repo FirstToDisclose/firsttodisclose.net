@@ -23,6 +23,7 @@ describe "Innovations" do
       expect(page).to have_content "can't be blank"
     end
 
+    # Needs rewrite for new tag system
     it "can be tagged" do
       tag = FactoryGirl.create(:tag)
       visit new_innovation_path

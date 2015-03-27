@@ -1,0 +1,24 @@
+<div class= "row">
+
+<form class="navbar-form navbar-left" role="search">
+  <div class="form-group">
+    <input type="text" id="search_bar" name="search" class="form-control" placeholder="Search">
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+</div>
+
+<div class= "row">
+  <% if @results %>
+    <ul>
+      <% @results.each do |innovation| %>
+        <li>
+          <%= link_to innovation.title, innovation_path(innovation) %>
+        </li>
+      <% end %>
+    </ul>
+  <% elsif @failed_search %>
+    <h2>No results found for "<%= @failed_search %>"</h2>
+  <% end %>
+</div>

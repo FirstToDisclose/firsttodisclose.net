@@ -17,6 +17,9 @@ gem 'google-webfonts-rails', '~> 0.0.4'
 # ams for building json
 gem 'active_model_serializers', '0.8.3'
 
+# For search functionality
+gem 'textacular', '~> 3.0'
+
 group :development, :test do
   gem 'pry'
   gem 'meta_request'
