@@ -2,7 +2,6 @@ require "rails_helper"
 
 describe "Search" do
   feature "Search for an innovation" do
-
     it "returns an exisiting innovation" do
       innovation = FactoryGirl.create(:innovation)
 

@@ -10,17 +10,15 @@
 </div>
 
 <div class= "row">
-
-<% if @results %>
-  <ul>
-    <% @results.each do |innovation| %>
-      <li>
-        <%= link_to innovation.title, innovation_path(innovation) %>
-      </li>
-    <% end %>
-  </ul>
-<% elsif @failed_search %>
-  <h2>No results found for "<%= @failed_search %>"</h2>
-<% end %>
-
+  <% if @results %>
+    <ul>
+      <% @results.each do |innovation| %>
+        <li>
+          <%= link_to innovation.title, innovation_path(innovation) %>
+        </li>
+      <% end %>
+    </ul>
+  <% elsif @failed_search %>
+    <h2>No results found for "<%= @failed_search %>"</h2>
+  <% end %>
 </div>
