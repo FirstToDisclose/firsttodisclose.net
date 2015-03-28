@@ -13,46 +13,55 @@
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
-	<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
-	  <span class="sr-only">Toggle navigation</span>
-	  <span class="icon-bar"></span>
-	  <span class="icon-bar"></span>
-	  <span class="icon-bar"></span>
-	</button>
-	<%= link_to "First to Disclose", {:controller => 'welcome', :action => 'index'}, :class => 'navbar-brand'%>
+        <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to "First to Disclose", {:controller => '/welcome', :action => 'index'}, :class => 'navbar-brand'%>
       </div>
       <div id="navbarCollapse" class="navbar-collapse collapse">
-	<ul class="nav navbar-nav">
-	  <li><%= link_to "New Innovation",
-		  {:controller => 'innovations', :action => 'new'} %></li>
-	  <li><%= link_to "Innovations",
-		  {:controller => 'innovations', :action => 'index'} %></li>
-	  <li><%= link_to "FAQ",
-		  {:controller => 'faq', :action => 'index'} %></li>
-    <li><%= link_to "Search", search_index_path %></li>
-	</ul>
-	<ul class="nav navbar-nav navbar-right">
-	  <li><a href="#devise/registration:edit">Login</a></li>
-	</ul>
+        <ul class="nav navbar-nav">
+          <li><%= link_to "New Innovation",
+                  {:controller => '/innovations', :action => 'new'} %></li>
+          <li><%= link_to "Innovations",
+                  {:controller => '/innovations', :action => 'index'} %></li>
+          <li><%= link_to "FAQ",
+                  {:controller => '/faq', :action => 'index'} %></li>
+          <li><%= link_to "Search", search_index_path %></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <% if current_user %>
+          Welcome, <%= current_user.name %> <%= link_to "Logout", "/logout" %>
+          <% else %>
+          <%= link_to "Login",
+              {
+              :controller => '/devise/registrations',
+          :action => 'edit'} %>
+          <% end %>
+        </ul>
       </div>
     </div>
   </nav>
   <div class="container">
-  	<div class="row">
-  		<div class="col-md-12">
+    <div class="row">
+      <div class="col-md-12">
 
-      <% flash.each do |key, value| %>
-        <div class="flash flash-<%= key %>">
-          <%= value %>
-        </div>
-      <% end %>
+        <% flash.each do |key, value| %>
+          <div class="flash flash-<%= key %>">
+            <%= value %>
+          </div>
+        <% end %>
 
-  			<%= yield %>
-  		</div>
-  	</div>
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+
+        <%= yield %>
+
+      </div>
+    </div>
   </div>
-
-
 
 </body>
 </html>

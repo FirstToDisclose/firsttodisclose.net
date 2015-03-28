@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 gem 'pg'
 gem 'sass-rails', '~> 5.0'
@@ -8,17 +7,25 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 
-#bootstrap
+# bootstrap
 gem 'bootstrap-sass', '~> 3.3.3'
 
-#for web fonts
+# web fonts
 gem 'google-webfonts-rails', '~> 0.0.4'
 
 # ams for building json
 gem 'active_model_serializers', '0.8.3'
 
-# For search functionality
+# search functionality
 gem 'textacular', '~> 3.0'
+
+# login
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-github'
+gem 'omniauth-facebook'
+gem 'omniauth-linkedin'
+gem 'omniauth-mit', :github => 'FirstToDisclose/omniauth-mit'
 
 group :development, :test do
   gem 'pry'
