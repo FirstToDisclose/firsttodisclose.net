@@ -5,7 +5,7 @@ class Innovation < ActiveRecord::Base
   validates :title, presence: true, uniqueness: true, length: { minimum: 20, maximum: 200 }
   validates :abstract, presence: true, length: { minimum: 200, maximum: 1000 }
   validates :body, presence: true, length: { minimum: 250, maximum: 10_000 }
-  validates :consented, presence: true # presence validaiton used for booleans
+  validates :consented, presence: true
 
   def create_tags(params)
     tags = params[:innovation][:innovation_tags].split(",")

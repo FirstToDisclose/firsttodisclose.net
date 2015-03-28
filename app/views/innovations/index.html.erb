@@ -1,31 +1,12 @@
 <h1>Listing Innovations</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Abstract</th>
-      <th>Body</th>
-      <th>Consented</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<% @innovations.each do |innovation| %>
+  <h2><%= link_to innovation.title, innovation_path(innovation) %></h2>
+  <blockquote><%= innovation.abstract %></blockquote>
+  <p><%= innovation.body %></p>
+  <p>Consented: <%= innovation.consented %></p>
+  <hr/>
+<% end %>
 
-  <tbody>
-    <% @innovations.each do |innovation| %>
-      <tr>
-        <td><%= link_to innovation.title, innovation_path(innovation) %></td>
-        <td><%= innovation.abstract %></td>
-        <td><%= innovation.body %></td>
-        <td><%= innovation.consented %></td>
-        <td><%= link_to 'Show', innovation %></td>
-        <td><%= link_to 'Edit', edit_innovation_path(innovation) %></td>
-        <td><%= link_to 'Destroy', innovation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
 
 <%= link_to 'New Innovation', new_innovation_path %>
