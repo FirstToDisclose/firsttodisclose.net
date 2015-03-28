@@ -1,0 +1,2 @@
+module InnovationsHelper
+end

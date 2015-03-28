@@ -1,0 +1,6 @@
+django==1.7.4
+psycopg2
+python-social-auth
+dj-database-url
+gunicorn
+dj-static

@@ -11,7 +11,7 @@ describe Tag do
   end
 
   describe "associations" do
-    it { should have_many :disclosure_tags }
-    it { should have_many :disclosures }
+    it { should have_many :innovation_tags }
+    it { should have_many :innovations }
   end
 end

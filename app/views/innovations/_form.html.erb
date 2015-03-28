@@ -1,0 +1,63 @@
+<%= form_for(@innovation) do |f| %>
+  <% if @innovation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@innovation.errors.count, "error") %> prohibited this innovation from being saved:</h2>
+
+      <ul>
+      <% @innovation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title, :class => 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :abstract %><br>
+    <%= f.text_area :abstract, :class => 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :body %><br>
+    <%= f.text_area :body, :class => 'form-control' %>
+  </div>
+  <div class="field">
+    <p>
+      Use Creative Commons Attribution License
+      We accept content under licensed for use under Creative Commons Attribution 4.0 International (CC BY 4.0) http://creativecommons.org/licenses/by/4.0
+    </p>
+    <%= f.label :consented %>I hereby license the content submitted through this form under Attribution 4.0 International (CC BY 4.0)<br>
+    <%= f.check_box :consented, :class => 'form-control' %>
+  </div>
+
+  <%= f.hidden_field :innovation_tags, id: "hidden-tag-field" %>
+
+
+  <input data-role="tagsinput" id="tags"/>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<script>
+
+// Helper function for updating value of tags
+function updateTagList(){
+    var taglist = $('#tags').tagsinput('items');
+    // Find hidden field
+    $('#hidden-tag-field').val(taglist);
+}
+
+$('input').on('itemAdded', function() {
+  updateTagList();
+});
+
+$('input').on('itemRemoved', function() {
+  updateTagList();
+});
+
+</script>
