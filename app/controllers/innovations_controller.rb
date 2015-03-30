@@ -1,5 +1,12 @@
 class InnovationsController < ApplicationController
   before_action :set_innovation, only: [:show, :edit, :update, :destroy]
+  before_filter :check_privileges!, only: [:new, :create, :edit, :save]
+
+  def check_privileges!
+    if !user_signed_in?
+      redirect_to "/users/sign_in"
+    end
+  end
 
   # GET /innovations
   # GET /innovations.json
@@ -19,7 +26,7 @@ class InnovationsController < ApplicationController
 
   # GET /innovations/new
   def new
-    @innovation = Innovation.new
+      @innovation = Innovation.new
   end
 
   # GET /innovations/1/edit
