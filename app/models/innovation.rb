@@ -1,6 +1,7 @@
 class Innovation < ActiveRecord::Base
   has_many :innovation_tags
   has_many :tags, through: :innovation_tags
+  has_many :reviews
 
   validates :title, presence: true, uniqueness: true, length: { minimum: 20, maximum: 200 }
   validates :abstract, presence: true, length: { minimum: 200, maximum: 1000 }
