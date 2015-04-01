@@ -10,6 +10,7 @@ uid "MyString"
   factory :user do
     sequence(:email) { |n| "user#{n}@example.com" }
     password "password"
+    reviewer false
   end
 
   factory :innovation do
