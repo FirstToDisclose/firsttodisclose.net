@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
-  resources :innovations
   resources :collections, only: [:new, :create, :show] do
     resources :collection_innovations, only: [:new, :create]
   end
+
+  resources :innovations do
+    resources :reviews, only: [:new, :create]
+  end
+
   resources :tags, only: [:show, :index]
   resources :search, only: [:index]
 

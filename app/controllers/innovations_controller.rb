@@ -4,7 +4,7 @@ class InnovationsController < ApplicationController
 
   def check_privileges!
     if !user_signed_in?
-      redirect_to "/users/sign_in"
+      redirect_to "/users/sign_in", :notice =>  "You must have an account to submit innovations."
     end
   end
 
@@ -18,6 +18,7 @@ class InnovationsController < ApplicationController
   # GET /innovations/1.json
   def show
     @innovation = Innovation.find(params[:id])
+    @review = Review.new
     respond_to do |format|
       format.html { render :show }
       format.json { render json: @innovation }

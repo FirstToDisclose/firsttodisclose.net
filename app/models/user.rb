@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   has_many :collections
+  has_many :reviews
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
 
@@ -32,6 +33,10 @@ class User < ActiveRecord::Base
       identity.save!
     end
     user
+  end
+
+  def reviewer?
+    self.reviewer
   end
 
 end

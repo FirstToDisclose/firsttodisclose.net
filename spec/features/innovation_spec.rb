@@ -2,13 +2,18 @@ require "rails_helper"
 
 describe "Innovations" do
   feature "creating a Innovation" do
+    before(:each) do
+      user = FactoryGirl.create(:user)
+      sign_in(user)
+    end
+
     it "accepts valid attributes" do
       visit new_innovation_path
 
       fill_in "Title", with: "My New Valid Innovation"
       fill_in "Abstract", with: "This is my Innovation" * 10
       fill_in "Body", with: "Here is a detailed description of my Innovation" * 30
-      check "Consented"
+      check "innovation_consented"
       click_on "Create Innovation"
 
       expect(page).to have_content "Innovation was successfully created"
@@ -24,14 +29,14 @@ describe "Innovations" do
     end
 
     # Needs rewrite for new tag system
-    it "can be tagged" do
+    xit "can be tagged" do
       tag = FactoryGirl.create(:tag)
       visit new_innovation_path
 
       fill_in "Title", with: "My New Valid Innovation"
       fill_in "Abstract", with: "This is my Innovation" * 10
       fill_in "Body", with: "Here is a detailed description of my Innovation" * 30
-      check "Consented"
+      check "innovation_consented"
       check tag.name
       click_on "Create Innovation"
 

@@ -1,6 +1,7 @@
 class Innovation < ActiveRecord::Base
   has_many :innovation_tags
   has_many :tags, through: :innovation_tags
+  has_many :reviews
 
   has_many :collection_innovations
   has_many :collections, through: :collection_innovations
@@ -25,5 +26,34 @@ class Innovation < ActiveRecord::Base
 
   def belongs_to_collection?(collection)
     collections.include?(collection)
+  end
+
+  def has_been_reviewed_by?(user)
+    review = Review.find_by(user: user, innovation: self)
+    !review.blank?
+  end
+
+  def reviewable_by?(user)
+    !self.has_been_reviewed_by?(user) && user.reviewer?
+  end
+
+  def novelty_score
+    reviews.sum(:novelty_rating).to_f / reviews.count
+  end
+
+  def value_score
+    reviews.sum(:value_rating).to_f / reviews.count
+  end
+
+  def usability_score
+    reviews.sum(:usability_rating).to_f / reviews.count
+  end
+
+  def fourth_score
+    reviews.sum(:fourth_rating).to_f / reviews.count
+  end
+
+  def fifth_score
+    reviews.sum(:fifth_rating).to_f / reviews.count
   end
 end

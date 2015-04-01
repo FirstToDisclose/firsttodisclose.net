@@ -1,10 +1,15 @@
-FactoryGirl.define do  factory :collection_innovation do
-    
-  end
+FactoryGirl.define do
 
+  factory :collection_innovation do
+
+  end
 
   factory :collection do
     title "My Collection"
+  end
+
+  factory :review do
+
   end
 
   factory :identity do
@@ -14,8 +19,9 @@ FactoryGirl.define do  factory :collection_innovation do
   end
 
   factory :user do
-    sequence(:email) { |n| "user#{n}@email.com" }
+    sequence(:email) { |n| "user#{n}@example.com" }
     password "password"
+    reviewer false
   end
 
   factory :innovation do
