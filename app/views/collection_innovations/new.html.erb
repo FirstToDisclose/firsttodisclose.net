@@ -1,0 +1,7 @@
+<h3>Add Innovations:</h3>
+
+<% @collection.available_innovations.each do |innovation| %>
+  <div>
+    Add Innovation: <%= link_to innovation.title, collection_collection_innovations_path(@collection, { innovation_id: innovation.id }), method: :post %>
+  </div>
+<% end %>

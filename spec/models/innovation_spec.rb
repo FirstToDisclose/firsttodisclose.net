@@ -25,6 +25,8 @@ describe Innovation do
   describe "associations" do
     it { should have_many :innovation_tags }
     it { should have_many :tags }
+    it { should have_many :collections }
+    it { should have_many :collection_innovations }
     it { should have_many :reviews }
   end
 end

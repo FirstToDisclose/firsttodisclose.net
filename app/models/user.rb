@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
+  has_many :collections
   has_many :reviews
 
   def self.find_for_oauth(auth, signed_in_resource = nil)

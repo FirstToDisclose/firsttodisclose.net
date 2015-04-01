@@ -1,0 +1,14 @@
+<h2><%= @collection.title %></h2>
+
+<p>
+  <%= link_to "Add innovations to this collection", new_collection_collection_innovation_path(@collection) %>
+</p>
+
+<div class="collection-innovations">
+  <h3>Innovations</h3>
+  <% @collection.innovations.each do |innovation| %>
+    <div>
+      <%= link_to innovation.title, innovation_path(innovation) %>
+    </div>
+  <% end %>
+</div>
