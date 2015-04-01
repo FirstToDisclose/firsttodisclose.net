@@ -1,6 +1,7 @@
 class Innovation < ActiveRecord::Base
   has_many :innovation_tags
   has_many :tags, through: :innovation_tags
+  has_many :reviews
 
   validates :title, presence: true, uniqueness: true, length: { minimum: 20, maximum: 200 }
   validates :abstract, presence: true, length: { minimum: 200, maximum: 1000 }
@@ -18,5 +19,14 @@ class Innovation < ActiveRecord::Base
       end
     end
     true
+  end
+
+  def has_been_reviewed_by?(user)
+    review = Review.find_by(user: user, innovation: self)
+    !review.blank?
+  end
+
+  def reviewable_by?(user)
+    !self.has_been_reviewed_by?(user) && user.reviewer?
   end
 end

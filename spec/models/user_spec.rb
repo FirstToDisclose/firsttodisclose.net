@@ -10,9 +10,10 @@ RSpec.describe User, type: :model do
     it { should validate_presence_of :name }
   end
 
-  pending "associations" do
-    it { should have_many :innovation_tags }
-    it { should have_many :innovations }
+  describe "associations" do
+    xit { should have_many :innovation_tags }
+    xit { should have_many :innovations }
+    it { should have_many :reviews }
   end
 
 end

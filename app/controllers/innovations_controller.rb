@@ -18,6 +18,7 @@ class InnovationsController < ApplicationController
   # GET /innovations/1.json
   def show
     @innovation = Innovation.find(params[:id])
+    @review = Review.new
     respond_to do |format|
       format.html { render :show }
       format.json { render json: @innovation }

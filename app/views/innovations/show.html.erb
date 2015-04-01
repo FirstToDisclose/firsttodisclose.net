@@ -29,3 +29,11 @@
 
 <%= link_to 'Edit', edit_innovation_path(@innovation) %> |
 <%= link_to 'Back', innovations_path %>
+
+<% if signed_in? && @innovation.reviewable_by?(current_user) %>
+  <%= render partial: "innovations/review_fields" %>
+<% end %>
+
+<% if @innovation.reviews.any? %>
+  <%= render partial: "innovations/review_list" %>
+<% end %>

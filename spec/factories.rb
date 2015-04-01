@@ -1,10 +1,16 @@
-FactoryGirl.define do  factory :identity do
+FactoryGirl.define do  factory :review do
+
+  end
+  factory :identity do
     user nil
 provider "MyString"
 uid "MyString"
   end
+
   factory :user do
-    
+    sequence(:email) { |n| "user#{n}@example.com" }
+    password "password"
+    reviewer false
   end
 
   factory :innovation do
