@@ -13,6 +13,7 @@ RSpec.describe User, type: :model do
   pending "associations" do
     it { should have_many :innovation_tags }
     it { should have_many :innovations }
+    it { should have_many :collections }
   end
 
 end
