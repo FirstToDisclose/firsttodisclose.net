@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :innovations
+  resources :innovations do
+    resources :reviews, only: [:new, :create]
+  end
   resources :tags, only: [:show, :index]
   resources :search, only: [:index]
 

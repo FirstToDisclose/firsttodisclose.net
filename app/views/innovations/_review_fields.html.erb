@@ -1,0 +1,21 @@
+<%= form_for [@innovation, @review] do |f| %>
+  <%= f.label :novelty_rating, "Novelty" %>
+  <%= f.select :novelty_rating, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5]] %>
+
+  <%= f.label :usability_rating, "Usability" %>
+  <%= f.select :usability_rating, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5]] %>
+
+  <%= f.label :value_rating, "Value" %>
+  <%= f.select :value_rating, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5]] %>
+
+  <%= f.label :fourth_rating, "Fourth" %>
+  <%= f.select :fourth_rating, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5]] %>
+
+  <%= f.label :fifth_rating, "Fifth" %>
+  <%= f.select :fifth_rating, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5]] %>
+
+  <%= f.label :content, "Body" %>
+  <%= f.text_area :content %>
+
+  <%= f.submit "Submit Review" %>
+<% end %>

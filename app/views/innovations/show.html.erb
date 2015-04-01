@@ -29,3 +29,9 @@
 
 <%= link_to 'Edit', edit_innovation_path(@innovation) %> |
 <%= link_to 'Back', innovations_path %>
+
+<%= render partial: "innovations/review_fields" %>
+
+<% if @innovation.reviews.any? %>
+  <%= render partial: "innovations/review_list" %>
+<% end %>
