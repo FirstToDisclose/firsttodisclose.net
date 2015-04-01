@@ -20,4 +20,9 @@ class Innovation < ActiveRecord::Base
     end
     true
   end
+
+  def has_been_reviewed_by?(user)
+    review = Review.find_by(user: user, innovation: self)
+    !review.blank?
+  end
 end

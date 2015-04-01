@@ -1,13 +1,18 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_user!
+
+  def new
+  end
+
   def create
     @innovation = Innovation.find(params[:innovation_id])
     @review = current_user.reviews.build(review_params)
     @review.innovation = @innovation
     if @review.save
       flash[:notice] = "Review Submitted"
-      redirect_to innovation_path(@review.innovation)
+      redirect_to innovation_path(@innovation)
     else
-      render innovation_path(@innovation)
+      redirect_to innovation_path(@innovation)
     end
   end
 

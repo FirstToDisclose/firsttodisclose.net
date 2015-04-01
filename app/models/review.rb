@@ -18,4 +18,6 @@ class Review < ActiveRecord::Base
                              numericality: true,
                              inclusion: { in: [1, 2, 3, 4, 5] }
   validates :content, length: { maximum: 10_000 }
+  validates :user_id, uniqueness: { scope: :innovation_id,
+    message: "You can only review each innovation once" }
 end
