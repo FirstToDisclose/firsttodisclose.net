@@ -7,6 +7,7 @@ RSpec.describe Collection, type: :model do
 
   describe "associations" do
     it { should have_many :innovations }
+    it { should have_many :collection_innovations }
     it { should belong_to :user }
   end
 

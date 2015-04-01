@@ -1,0 +1,7 @@
+<h1>Add Innovations</h1>
+
+<%= @collection.available_innovations do |innovation| %>
+  <div>
+    Add innovation: <%= link_to "#{innovation.title}", update_path(@collection), method: :post %>
+  </div>
+<% end %>
