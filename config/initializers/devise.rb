@@ -13,7 +13,6 @@ Devise.setup do |config|
   config.sign_out_via = :delete
   config.omniauth :github, '64f0f24ed394a2f20496', '665a1cd6e815afe20fb7b0a7b2783ae07580c983', scope: 'user,public_repo'
   config.omniauth :facebook, ENV['FB_ID'] || '858263664247424', ENV['FB_SECRET'] || '01cf8dc56ff90ad924b2a6c0e0b30d0d'
-  config.omniauth :linkedin, '777003zxixuvrs', 'WZO7NBywGJmQLEYY'
   config.omniauth :mit, '000000000000000', '0000000000000000'
 
 end

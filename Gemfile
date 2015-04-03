@@ -24,7 +24,6 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'omniauth-facebook'
-gem 'omniauth-linkedin'
 gem 'omniauth-mit', :github => 'FirstToDisclose/omniauth-mit'
 
 group :development, :test do
