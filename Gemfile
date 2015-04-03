@@ -23,7 +23,6 @@ gem 'textacular', '~> 3.0'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-github'
-gem 'omniauth-facebook'
 gem 'omniauth-mit', :github => 'FirstToDisclose/omniauth-mit'
 gem "omniauth-google-oauth2"
 
