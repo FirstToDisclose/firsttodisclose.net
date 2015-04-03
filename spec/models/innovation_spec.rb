@@ -23,6 +23,7 @@ describe Innovation do
   end
 
   describe "associations" do
+    it { should belong_to :user }
     it { should have_many :innovation_tags }
     it { should have_many :tags }
     it { should have_many :collections }
