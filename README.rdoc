@@ -6,24 +6,29 @@ FirstToDisclose.net is a community-powered online repository for inventors to di
 
 * Ruby version: 2.x
 
+* Environment
+
+  cp config/application.sample.yml config/application.yml
+
 * System dependencies: Postgres
 
 * Database initialization
 
-`rake db:create`
+  rake db:create
 
 * How to run the test suite
 
-`rake`
+  rake
 
 * Deployment instructions
 
-`heroku login`
-`git push heroku master`
-`heroku run rake db:migrate`
+  heroku login
 
-  heroku config:add FB_ID=${FB_ID} --remote test
-  heroku config:add FB_SECRET=${FB_SECRET} --remote test
+  git push heroku master
+  heroku run rake db:migrate
+
+  heroku config:add GITHUB_KEY=${FB_ID} --remote test
+  heroku config:add GITHUB_SECRET=${FB_SECRET} --remote test
 
 == About
 
