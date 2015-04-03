@@ -35,6 +35,21 @@ p {
 	font-size: 1.2em;
 }
 
+.flash {
+    background-color: #eee;
+    border: 1px solid #999;
+    padding: 5px;
+    font-weight: bold;
+}
+
+.flash-notice {
+    color: #81a839;
+}
+
+.flash-alert {
+    color: #cf3446;
+}
+
 .welcome_banner {
 	max-width: 90%;
 }
