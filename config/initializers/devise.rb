@@ -11,8 +11,8 @@ Devise.setup do |config|
   config.password_length = 8..128
   config.reset_password_within = 6.hours
   config.sign_out_via = :delete
-  config.omniauth :github, '64f0f24ed394a2f20496', '665a1cd6e815afe20fb7b0a7b2783ae07580c983', scope: 'user,public_repo'
+  config.omniauth :github, ENV['GITHUB_KEY'] || '64f0f24ed394a2f20496', ENV['GITHUB_SECRET'] || '665a1cd6e815afe20fb7b0a7b2783ae07580c983', scope: 'user,public_repo'
   config.omniauth :facebook, ENV['FB_ID'] || '858263664247424', ENV['FB_SECRET'] || '01cf8dc56ff90ad924b2a6c0e0b30d0d'
-  config.omniauth :mit, '000000000000000', '0000000000000000'
+  config.omniauth :mit, ENV['MIT_ID'] || '000000000000000', ENV['MIT_SECRET'] || '0000000000000000'
 
 end

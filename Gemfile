@@ -26,6 +26,9 @@ gem 'omniauth-github'
 gem 'omniauth-facebook'
 gem 'omniauth-mit', :github => 'FirstToDisclose/omniauth-mit'
 
+# environments
+gem "figaro"
+
 group :development, :test do
   gem 'pry'
   gem 'meta_request'
