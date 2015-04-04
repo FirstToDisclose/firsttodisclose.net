@@ -1,5 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Identity, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "attributes" do
+  end
+
+  describe "validations" do
+  end
+
+  describe "associations" do
+    it { should belong_to :user }
+  end
+
 end
