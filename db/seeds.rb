@@ -1,7 +1,8 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 
-user = User.create(name: "Seed User", email: "example@example.com", password: "password")
+user = User.create(name: "Seed User", email: "user@example.com", password: "password")
+reviewer = User.create(name: "Seed Reviewer", email: "reviewer@example.com", password: "password", reviewer: true)
 
 # US7650331
 user.innovations.create(title: "System and method for efficient large-scaledata processing",
