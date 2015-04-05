@@ -6,6 +6,11 @@
   <p><%= innovation.body %></p>
   <p>Consented: <%= innovation.consented %></p>
   <p>User: <%= innovation.user_id %></p>
+  <% if current_user %>
+    <p>Owned:
+      <%= current_user && current_user.id == innovation.user_id %>
+    </p>
+  <% end %>
   <hr/>
 <% end %>
 

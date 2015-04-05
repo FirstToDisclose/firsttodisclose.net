@@ -11,11 +11,7 @@ class InnovationsController < ApplicationController
   # GET /innovations
   # GET /innovations.json
   def index
-    if current_user
-      @innovations = current_user.innovations.all
-    else
       @innovations = Innovation.all
-    end
   end
 
   # GET /innovations/1
