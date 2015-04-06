@@ -24,10 +24,13 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'omniauth-mit', :github => 'FirstToDisclose/omniauth-mit'
-gem "omniauth-google-oauth2"
+gem 'omniauth-google-oauth2'
 
 # environments
-gem "figaro"
+gem 'figaro'
+
+# rendering
+gem 'redcarpet'
 
 group :development, :test do
   gem 'pry'
