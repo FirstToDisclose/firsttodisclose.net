@@ -19,7 +19,7 @@ class InnovationsController < ApplicationController
   def show
     @innovation = Innovation.find(params[:id])
     @review = Review.new
-    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, filter_html: true, escape_html: true, no_styles: true, prettify: true)
     @markdown_abstract = markdown.render(@innovation.abstract).html_safe
     @markdown_body = markdown.render(@innovation.body).html_safe
     respond_to do |format|
