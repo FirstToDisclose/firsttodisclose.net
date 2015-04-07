@@ -55,6 +55,8 @@ GEM
     bootstrap-sass (3.3.4.1)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.2.19)
+    bootstrap-social-rails (4.8.0)
+      railties (>= 3.1)
     builder (3.2.2)
     callsite (0.0.11)
     capybara (2.4.4)
@@ -88,6 +90,8 @@ GEM
       railties (>= 3.0.0)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
+    font-awesome-rails (4.3.0.0)
+      railties (>= 3.2, < 5.0)
     globalid (0.3.3)
       activesupport (>= 4.1.0)
     google-webfonts-rails (0.0.4)
@@ -246,11 +250,13 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers (= 0.8.3)
   bootstrap-sass (~> 3.3.3)
+  bootstrap-social-rails
   capybara
   coffee-rails (~> 4.1.0)
   devise
   factory_girl
   factory_girl_rails (~> 4.0)
+  font-awesome-rails
   google-webfonts-rails (~> 0.0.4)
   jquery-rails
   launchy

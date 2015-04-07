@@ -9,6 +9,11 @@ gem 'jquery-rails'
 
 # bootstrap
 gem 'bootstrap-sass', '~> 3.3.3'
+gem 'bootstrap-social-rails'
+
+#font awesome
+gem "font-awesome-rails"
+
 
 # web fonts
 gem 'google-webfonts-rails', '~> 0.0.4'
