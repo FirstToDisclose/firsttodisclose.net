@@ -19,6 +19,9 @@ class InnovationsController < ApplicationController
   def show
     @innovation = Innovation.find(params[:id])
     @review = Review.new
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::Safe, safe_links_only: true, escape_html: true, no_styles: true)
+    @markdown_abstract = markdown.render(@innovation.abstract).html_safe
+    @markdown_body = markdown.render(@innovation.body).html_safe
     respond_to do |format|
       format.html { render :show }
       format.json { render json: @innovation }
@@ -27,7 +30,7 @@ class InnovationsController < ApplicationController
 
   # GET /innovations/new
   def new
-      @innovation = current_user.innovations.new
+    @innovation = current_user.innovations.new
   end
 
   # GET /innovations/1/edit

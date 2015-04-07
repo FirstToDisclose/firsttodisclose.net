@@ -34,6 +34,9 @@ gem 'omniauth-google-oauth2'
 # environments
 gem 'figaro'
 
+# rendering
+gem 'redcarpet'
+
 group :development, :test do
   gem 'pry'
   gem 'meta_request'

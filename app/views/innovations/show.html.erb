@@ -2,15 +2,15 @@
   <%= render partial: "innovations/review_fields" %>
 <% end %>
 
+<h3><%= @innovation.title %></h3>
 
-<h3>Title:</h3>
-<%= @innovation.title %>
 
 <h3>Abstract:</h3>
-<%= @innovation.abstract %>
+<%= @markdown_abstract %>
+
 
 <h3>Body:</h3>
-<%= @innovation.body %>
+<%= @markdown_body %>
 
 <h3>Consented:</h3>
 <%= @innovation.consented %>
