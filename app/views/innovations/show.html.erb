@@ -1,31 +1,40 @@
-<p>
-  <strong>Title:</strong>
-  <%= @innovation.title %>
-</p>
-
-<p>
-  <strong>Abstract:</strong>
-  <%= @innovation.abstract %>
-</p>
-
-<p>
-  <strong>Body:</strong>
-  <%= @innovation.body %>
-</p>
-
-<p>
-  <strong>Consented:</strong>
-  <%= @innovation.consented %>
-</p>
-
-<% if @innovation.tags.any? %>
-  <p>
-    <strong>Tags:</strong>
-    <% @innovation.tags.each do |tag| %>
-      <div><%= link_to tag.name, tag_path(tag) %></div>
-    <% end %>
-  </p>
+<% if signed_in? && @innovation.reviewable_by?(current_user) %>
+  <%= render partial: "innovations/review_fields" %>
 <% end %>
 
-<%= link_to 'Edit', edit_innovation_path(@innovation) %> |
-<%= link_to 'Back', innovations_path %>
+
+<h3>Title:</h3>
+<%= @innovation.title %>
+
+<h3>Abstract:</h3>
+<%= @innovation.abstract %>
+
+<h3>Body:</h3>
+<%= @innovation.body %>
+
+<h3>Consented:</h3>
+<%= @innovation.consented %>
+
+<h3>User:</h3>
+<%= @innovation.user_id %>
+
+<% if current_user %>
+  <h3>Owned:</h3>
+    <%= current_user && current_user.id == @innovation.user_id %>
+<% end %>
+
+<% if @innovation.tags.any? %>
+  <h3>Tags:</h3>
+  <% @innovation.tags.each do |tag| %>
+    <div><%= link_to tag.name, tag_path(tag) %></div>
+  <% end %>
+<% end %>
+
+<p>
+  <%= link_to 'Edit', edit_innovation_path(@innovation) %> |
+  <%= link_to 'Back', innovations_path %>
+</p>
+
+<% if @innovation.reviews.any? %>
+  <%= render partial: "innovations/review_list" %>
+<% end %>

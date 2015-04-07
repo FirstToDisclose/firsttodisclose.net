@@ -11,13 +11,14 @@ class InnovationsController < ApplicationController
   # GET /innovations
   # GET /innovations.json
   def index
-    @innovations = Innovation.all
+      @innovations = Innovation.all
   end
 
   # GET /innovations/1
   # GET /innovations/1.json
   def show
     @innovation = Innovation.find(params[:id])
+    @review = Review.new
     respond_to do |format|
       format.html { render :show }
       format.json { render json: @innovation }
@@ -26,7 +27,7 @@ class InnovationsController < ApplicationController
 
   # GET /innovations/new
   def new
-      @innovation = Innovation.new
+      @innovation = current_user.innovations.new
   end
 
   # GET /innovations/1/edit
@@ -36,7 +37,7 @@ class InnovationsController < ApplicationController
   # POST /innovations
   # POST /innovations.json
   def create
-    @innovation = Innovation.new(innovation_params)
+    @innovation = current_user.innovations.new(innovation_params)
     respond_to do |format|
       if @innovation.save && @innovation.create_tags(params)
         format.html { redirect_to @innovation, notice: 'Innovation was successfully created.' }

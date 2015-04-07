@@ -1,0 +1,17 @@
+<h3>Reviews</h3>
+
+<% @innovation.reviews.each do |review| %>
+  <div class="review">
+    <h4><%= review.user.email %></h4>
+    <ul>
+      <li>Tooling: <tt><%= review.fourth_rating %></tt></li>
+      <li>Usability: <tt><%= review.usability_rating %></tt></li>
+      <li>Value: <tt><%= review.value_rating %></tt></li>
+      <li>Lifespan: <tt><%= review.fifth_rating %></tt></li>
+      <li>Novelty: <tt><%= review.novelty_rating %></tt></li>
+      <li>Comments:
+        <blockquote><%= review.content %></blockquote>
+      </li>
+    </ul>
+  </div>
+<% end %>

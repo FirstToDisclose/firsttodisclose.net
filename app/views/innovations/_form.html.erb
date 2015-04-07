@@ -12,6 +12,13 @@
   <% end %>
 
   <div class="field">
+    <p>
+      We accept content licensed for use under Creative Commons Attribution 4.0 International (CC BY 4.0) http://creativecommons.org/licenses/by/4.0
+    </p>
+    <%= f.check_box :consented, :class => '' %> I hereby license the content submitted through this form under Attribution 4.0 International (CC BY 4.0)
+  </div>
+
+  <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title, :class => 'form-control' %>
   </div>
@@ -22,13 +29,6 @@
   <div class="field">
     <%= f.label :body %><br>
     <%= f.text_area :body, :class => 'form-control' %>
-  </div>
-  <div class="field">
-    <p>
-      We accept content under licensed for use under Creative Commons Attribution 4.0 International (CC BY 4.0) http://creativecommons.org/licenses/by/4.0
-    </p>
-    <%= f.check_box :consented, :class => 'form-control' %>
-    I hereby license the content submitted through this form under Attribution 4.0 International (CC BY 4.0)
   </div>
 
   <%= f.hidden_field :innovation_tags, id: "hidden-tag-field" %>

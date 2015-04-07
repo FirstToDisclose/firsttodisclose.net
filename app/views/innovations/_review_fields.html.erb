@@ -1,0 +1,38 @@
+<h2>Review This Innovation</h2>
+
+<div class="review-fields">
+  <%= form_for [@innovation, @review] do |f| %>
+  <ul>
+    <li>
+      <%= f.select :fourth_rating, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5]] %>
+      <%= f.label :fourth_rating, "Tooling (25%)" %>
+      Is this something that puts news tools in the hands of Firms, Attorneys, and the industry in general?
+    </li>
+    <li>
+      <%= f.select :usability_rating, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5]] %>
+      <%= f.label :usability_rating, "Usability (20%)" %>
+      Is the hack usable in its current state? Is the user experience smooth?
+    </li>
+    <li>
+      <%= f.select :value_rating, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5]] %>
+      <%= f.label :value_rating, "Value (20%)" %>
+      Does it fulfill a real need people have?
+    </li>
+    <li>
+      <%= f.select :fifth_rating, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5]] %>
+      <%= f.label :fifth_rating, "Lifespan (20%)" %>
+      Is the hack something that people could continue to work on?
+    </li>
+    <li>
+      <%= f.select :novelty_rating, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5]] %>
+      <%= f.label :novelty_rating, "Novelty (15%)" %>
+      Does it do something entirely novel, or at least take a fresh approach to an old problem?
+    </li>
+    <li>
+      <%= f.text_area :content %>
+    </li>
+  </ul>
+  <%= f.submit "Submit Review" %>
+  <% end %>
+</div>
+<hr/>

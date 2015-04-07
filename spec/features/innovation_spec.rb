@@ -2,17 +2,52 @@ require "rails_helper"
 
 describe "Innovations" do
   feature "creating a Innovation" do
+    before(:each) do
+      user = FactoryGirl.create(:user)
+      sign_in(user)
+    end
+
     it "accepts valid attributes" do
       visit new_innovation_path
 
       fill_in "Title", with: "My New Valid Innovation"
       fill_in "Abstract", with: "This is my Innovation" * 10
       fill_in "Body", with: "Here is a detailed description of my Innovation" * 30
-      check "Consented"
+      check "innovation_consented"
       click_on "Create Innovation"
 
       expect(page).to have_content "Innovation was successfully created"
       expect(page).to have_content "My New Valid Innovation"
+    end
+
+    it "escapes HTML" do
+      visit new_innovation_path
+
+      title = "escapes HTML: <script>alert(1)</script>"
+      fill_in "Title", with: title
+      fill_in "Abstract", with: "My XSS <script>alert(1)</script>" * 10
+      fill_in "Body", with: "Here is my XSS in Innovation <script>alert(1)</script>" * 30
+      check "innovation_consented"
+      click_on "Create Innovation"
+
+      expect(page).to have_content "Innovation was successfully created"
+      expect(page).to have_content title
+    end
+
+    it "preserves text" do
+      visit new_innovation_path
+
+      title = "preserves text: *foo*"
+      body = "\n- foo *bar* _baz_ body text validation"
+      fill_in "Title", with: title
+      fill_in "Abstract", with: "\n- foo *bar* _baz_ abstract text validation" * 10
+      fill_in "Body", with: body * 30
+      check "innovation_consented"
+      click_on "Create Innovation"
+
+      expect(page).to have_content "Innovation was successfully created"
+      expect(page).to have_content title
+      expect(page).to have_content body
     end
 
     it "rejects invalid attributes" do
@@ -24,14 +59,14 @@ describe "Innovations" do
     end
 
     # Needs rewrite for new tag system
-    it "can be tagged" do
+    xit "can be tagged" do
       tag = FactoryGirl.create(:tag)
       visit new_innovation_path
 
       fill_in "Title", with: "My New Valid Innovation"
       fill_in "Abstract", with: "This is my Innovation" * 10
       fill_in "Body", with: "Here is a detailed description of my Innovation" * 30
-      check "Consented"
+      check "innovation_consented"
       check tag.name
       click_on "Create Innovation"
 

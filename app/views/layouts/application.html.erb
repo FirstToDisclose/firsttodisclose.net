@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>First to Disclose</title>
+  <title>FirstToDisclose</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
@@ -19,7 +19,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <%= link_to "First to Disclose", {:controller => '/welcome', :action => 'index'}, :class => 'navbar-brand'%>
+        <%= link_to "FirstToDisclose", {:controller => '/welcome', :action => 'index'}, :class => 'navbar-brand'%>
       </div>
       <div id="navbarCollapse" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
@@ -68,9 +68,6 @@
             <%= value %>
           </div>
         <% end %>
-
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
 
         <%= yield %>
 <a class="btn btn-block btn-social btn-google-plus">
