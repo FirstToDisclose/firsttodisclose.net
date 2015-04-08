@@ -1,38 +1,38 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.0'
-gem 'pg'
+gem 'rails', '4.2.1'
+gem 'pg', '~> 0.18'
 gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.1.0'
-gem 'jquery-rails'
+gem 'uglifier', '~> 2.7'
+gem 'coffee-rails', '~> 4.1'
+gem 'jquery-rails', '~> 4.0'
 
 # bootstrap
-gem 'bootstrap-sass', '~> 3.3.3'
+
+gem 'bootstrap-sass', '~> 3.3'
 gem 'bootstrap-social-rails'
 
 #font awesome
-gem "font-awesome-rails"
-
+gem 'font-awesome-rails'
 
 # web fonts
 gem 'google-webfonts-rails', '~> 0.0.4'
 
 # ams for building json
-gem 'active_model_serializers', '0.8.3'
+gem 'active_model_serializers', '~> 0.9'
 
 # search functionality
 gem 'textacular', '~> 3.0'
 
 # login
-gem 'devise'
-gem 'omniauth'
-gem 'omniauth-github'
-gem 'omniauth-mit', :github => 'FirstToDisclose/omniauth-mit'
-gem 'omniauth-google-oauth2'
+gem 'devise', '~> 3.4'
+gem 'omniauth', '~> 1.2'
+gem 'omniauth-github', '~> 1.1'
+gem 'omniauth-google-oauth2', '~> 0.2'
+gem 'omniauth-mit', '~> 0.9', :github => 'FirstToDisclose/omniauth-mit'
 
 # environments
-gem 'figaro'
+gem 'figaro', '~> 1.1'
 
 # rendering
 gem 'redcarpet'
@@ -44,7 +44,7 @@ group :development, :test do
   gem 'capybara'
   gem 'launchy'
   gem 'factory_girl'
-  gem 'factory_girl_rails', '~> 4.0'
+  gem 'factory_girl_rails'
   gem 'warden'
 end
 
@@ -54,5 +54,5 @@ group :test do
 end
 
 group :production do
-  gem 'rails_12factor'
+  gem 'rails_12factor', '0.0.3'
 end
