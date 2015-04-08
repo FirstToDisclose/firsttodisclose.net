@@ -33,15 +33,7 @@
 
           
         </ul>
-        <div class="dropdown">
-  <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown trigger
-    <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-    ...
-  </ul>
-</div>
+        
         <ul class="nav navbar-nav navbar-right">
           <% if current_user %>
           Welcome, <%= current_user.name %> <%= link_to "Logout", "/logout" %>
@@ -70,13 +62,7 @@
         <% end %>
 
         <%= yield %>
-<a class="btn btn-block btn-social btn-google-plus">
-        <i class="fa fa-google"></i> Sign in with Google
-      </a>
 
-      <a class="btn btn-block btn-social btn-github">
-        <i class="fa fa-github"></i> Sign in with Github
-      </a>
       </div>
     </div>
   </div>

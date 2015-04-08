@@ -253,13 +253,8 @@ DEPENDENCIES
   coffee-rails (~> 4.1)
   devise (~> 3.4)
   factory_girl
-
-  factory_girl_rails (~> 4.0)
-
-
-
+  factory_girl_rails
   figaro (~> 1.1)
-
   font-awesome-rails
   google-webfonts-rails (~> 0.0.4)
   jquery-rails (~> 4.0)
