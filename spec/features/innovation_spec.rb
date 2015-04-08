@@ -20,6 +20,36 @@ describe "Innovations" do
       expect(page).to have_content "My New Valid Innovation"
     end
 
+    it "escapes HTML" do
+      visit new_innovation_path
+
+      title = "escapes HTML: <script>alert(1)</script>"
+      fill_in "Title", with: title
+      fill_in "Abstract", with: "My XSS <script>alert(1)</script>" * 10
+      fill_in "Body", with: "Here is my XSS in Innovation <script>alert(1)</script>" * 30
+      check "innovation_consented"
+      click_on "Create Innovation"
+
+      expect(page).to have_content "Innovation was successfully created"
+      expect(page).to have_content title
+    end
+
+    it "preserves text" do
+      visit new_innovation_path
+
+      title = "preserves text: *foo*"
+      body = "\n- foo *bar* _baz_ body text validation"
+      fill_in "Title", with: title
+      fill_in "Abstract", with: "\n- foo *bar* _baz_ abstract text validation" * 10
+      fill_in "Body", with: body * 30
+      check "innovation_consented"
+      click_on "Create Innovation"
+
+      expect(page).to have_content "Innovation was successfully created"
+      expect(page).to have_content title
+      expect(page).to have_content body
+    end
+
     it "rejects invalid attributes" do
       visit new_innovation_path
 
