@@ -12,17 +12,6 @@
 <h3>Body:</h3>
 <%= @markdown_body %>
 
-<h3>Consented:</h3>
-<%= @innovation.consented %>
-
-<h3>User:</h3>
-<%= @innovation.user_id %>
-
-<% if current_user %>
-  <h3>Owned:</h3>
-    <%= current_user && current_user.id == @innovation.user_id %>
-<% end %>
-
 <% if @innovation.tags.any? %>
   <h3>Tags:</h3>
   <% @innovation.tags.each do |tag| %>
@@ -31,9 +20,13 @@
 <% end %>
 
 <p>
-  <%= link_to 'Edit', edit_innovation_path(@innovation) %> |
+  <% if current_user && current_user.id == @innovation.user_id %>
+    <%= link_to 'Edit', edit_innovation_path(@innovation) %> |
+  <% end %>
   <%= link_to 'Back', innovations_path %>
 </p>
+
+
 
 <% if @innovation.reviews.any? %>
   <%= render partial: "innovations/review_list" %>
