@@ -1,0 +1,73 @@
+<%= form_for(@disclosure) do |f| %>
+  <% if @disclosure.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@disclosure.errors.count, "error") %> prohibited this disclosure from being saved:</h2>
+
+      <ul>
+      <% @disclosure.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title, :class => 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :abstract %><br>
+    <%= f.text_area :abstract, :class => 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :body %><br>
+    <%= f.text_area :body, :class => 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :consented %><br>
+    <%= f.check_box :consented, :class => 'form-control' %>
+  </div>
+
+  <div class="field">
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<input data-role="tagsinput" />
+
+
+<script>
+
+// Prevent default
+
+
+
+
+
+
+  // $('#tags').addTag(submitted);
+
+  $('#tags').tagsInput();
+
+  // $("#tags").keydown(function(event){
+  //   if (event.keyCode === 13){
+  //     event.preventDefault();
+  //     //$(this).addTag("Joe");
+  //     $('#tags').addTag('foo');
+  //     console.log($(this).val());
+  //   }
+
+
+  //  console.log(event.keyCode);
+  //});
+
+
+
+  // $('#tags').tagsInput({
+  //   autocomplete_url:'http://myserver.com/api/autocomplete'
+  // });
+</script>
