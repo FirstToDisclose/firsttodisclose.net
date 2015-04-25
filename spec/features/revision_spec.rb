@@ -32,4 +32,22 @@ describe "Revisions" do
       expect(@innovation.revisions.count).to eq(1)
     end
   end
+
+  feature "viewing revisions" do
+    before(:each) do
+      @innovation = FactoryGirl.create(:innovation)
+      @revision_1 = FactoryGirl.create(:revision, innovation: @innovation, created_at: Time.now + 1)
+      @revision_2 = FactoryGirl.create(:revision, innovation: @innovation, created_at: Time.now + 2, title: "Even newer title for this innovation")
+    end
+
+    it "should display all revisions for an innovation" do
+      visit innovation_path(@innovation)
+
+      click_on "View Revision History"
+
+      expect(page).to have_content @innovation.title
+      expect(page).to have_link "#{@revision_1.title} - #{@revision_1.created_at}"
+      expect(page).to have_link "#{@revision_2.title} - #{@revision_2.created_at}"
+    end
+  end
 end
