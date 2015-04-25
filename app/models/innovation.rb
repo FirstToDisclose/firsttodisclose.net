@@ -4,6 +4,7 @@ class Innovation < ActiveRecord::Base
   has_many :reviews
   has_many :collection_innovations
   has_many :collections, through: :collection_innovations
+  has_many :revisions
 
   belongs_to :user
 
