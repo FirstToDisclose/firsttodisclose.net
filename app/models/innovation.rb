@@ -4,6 +4,7 @@ class Innovation < ActiveRecord::Base
   has_many :reviews
   has_many :collection_innovations
   has_many :collections, through: :collection_innovations
+  has_many :revisions
 
   belongs_to :user
 
@@ -56,5 +57,14 @@ class Innovation < ActiveRecord::Base
 
   def fifth_score
     reviews.sum(:fifth_rating).to_f / reviews.count
+  end
+
+  def clone
+    @revision = Revision.create(title: title,
+                             abstract: abstract,
+                             body: body,
+                             consented: consented,
+                             user: user,
+                             innovation: self)
   end
 end

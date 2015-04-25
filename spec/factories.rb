@@ -1,4 +1,7 @@
-FactoryGirl.define do
+FactoryGirl.define do  factory :revision do
+    
+  end
+
 
   factory :collection_innovation do
 

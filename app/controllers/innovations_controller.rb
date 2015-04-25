@@ -1,5 +1,6 @@
 class InnovationsController < ApplicationController
   before_action :set_innovation, only: [:show, :edit, :update, :destroy]
+  before_action :clone_innovation, only: [:update, :destroy]
   before_filter :check_privileges!, only: [:new, :create, :edit, :save]
 
   def check_privileges!
@@ -85,5 +86,9 @@ class InnovationsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def innovation_params
       params.require(:innovation).permit(:title, :abstract, :body, :consented)
+    end
+
+    def clone_innovation
+      @innovation.clone
     end
 end
