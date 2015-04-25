@@ -40,4 +40,27 @@ feature "Collections" do
       expect(page).to have_content "Innovation #{innovation_2.title} was successfully added"
     end
   end
+
+  context "viewing a collection" do
+    it "should link to each innovation" do
+      @collection = FactoryGirl.create(:collection)
+      @collection.innovations << FactoryGirl.create(:innovation)
+
+      visit collection_path(@collection)
+
+      expect(page).to have_link @collection.innovations.first.title
+    end
+  end
+
+  context "viewing all collections" do
+    it "should link to each collection" do
+      @collection_1 = FactoryGirl.create(:collection)
+      @collection_2 = FactoryGirl.create(:collection)
+
+      visit collections_path
+
+      expect(page).to have_link @collection_1.title
+      expect(page).to have_link @collection_2.title
+    end
+  end
 end

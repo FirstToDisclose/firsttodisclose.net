@@ -17,6 +17,10 @@ class CollectionsController < ApplicationController
     @collection = Collection.find(params[:id])
   end
 
+  def index
+    @collections = Collection.all
+  end
+
   def edit
     @collection = Collection.find(params[:id])
   end

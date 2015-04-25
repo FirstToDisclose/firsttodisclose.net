@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :collections, only: [:new, :create, :show] do
+  resources :collections, only: [:new, :create, :show, :index] do
     resources :collection_innovations, only: [:new, :create]
   end
 
