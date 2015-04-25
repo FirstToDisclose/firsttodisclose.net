@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :tags, only: [:show, :index]
   resources :search, only: [:index]
+  resources :revisions, only: [:index, :show]
 
   get 'faq/index'
 

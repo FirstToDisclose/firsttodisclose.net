@@ -12,6 +12,10 @@
 <h3>Body:</h3>
 <%= @markdown_body %>
 
+<% if @innovation.revisions.any? %>
+  <%= link_to "View Revision History", revisions_path({ innovation_id: @innovation.id }) %>
+<% end %>
+
 <% if @innovation.tags.any? %>
   <h3>Tags:</h3>
   <% @innovation.tags.each do |tag| %>

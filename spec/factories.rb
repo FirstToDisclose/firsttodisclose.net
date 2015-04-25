@@ -1,8 +1,4 @@
-FactoryGirl.define do  factory :revision do
-    
-  end
-
-
+FactoryGirl.define do
   factory :collection_innovation do
 
   end
@@ -31,6 +27,15 @@ FactoryGirl.define do  factory :revision do
     sequence(:title) { |n| "My invention#{n}'s title" }
     abstract "It does amazing things" * 10
     body "Here is a description of how it works" * 30
+    consented true
+  end
+
+  factory :revision do
+    innovation
+    user
+    title "A newer title for my innovation"
+    abstract "It does different things" * 10
+    body "Here is an altered description of how it works" * 30
     consented true
   end
 

@@ -1,0 +1,12 @@
+<h1>Revision of <%= link_to @revision.innovation.title, innovation_path(@revision.innovation) %></h1>
+
+<h3><%= @revision.title %></h3>
+
+<p>Revised at: <%= @revision.created_at %></p>
+
+<h3>Abstract:</h3>
+<%= @markdown_abstract %>
+
+
+<h3>Body:</h3>
+<%= @markdown_body %>
