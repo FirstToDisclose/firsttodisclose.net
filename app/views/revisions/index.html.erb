@@ -1,6 +1,10 @@
-<h1>Revision History of <%= @revisions.first.innovation.title %></h1>
+<h1>Revision History of <%= link_to @revisions.first.innovation.title, innovation_path(@revisions.first.innovation) %></h1>
 
-<% @revisions.each do |revision| %>
-  <h2><%= link_to "#{revision.title} - #{revision.created_at}", revision_path(revision) %></h2>
-  <hr/>
-<% end %>
+<ol>
+  <% @revisions.each do |revision| %>
+    <li>
+      <h2><%= link_to "#{revision.title} - #{revision.created_at}", revision_path(revision) %></h2>
+      <hr/>
+    </li>
+  <% end %>
+</ol>
