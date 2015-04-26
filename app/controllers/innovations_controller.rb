@@ -12,7 +12,7 @@ class InnovationsController < ApplicationController
   # GET /innovations
   # GET /innovations.json
   def index
-      @innovations = Innovation.all
+      @innovations = Innovation.visible
   end
 
   # GET /innovations/1

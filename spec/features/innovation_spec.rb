@@ -85,5 +85,13 @@ describe "Innovations" do
       expect(page).to have_link Innovation_1.title
       expect(page).to have_link Innovation_2.title
     end
+
+    it "does not show hidden innovations" do
+      innovation = FactoryGirl.create(:innovation, hidden: true)
+
+      visit innovations_path
+
+      expect(page).not_to have_link innovation.title
+    end
   end
 end
