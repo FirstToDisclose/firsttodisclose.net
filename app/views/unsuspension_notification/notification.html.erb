@@ -1,0 +1,5 @@
+<h2><%= @innovation.title %> is no longer suspended</h2>
+
+<p>
+Your innovation, <%= @innovation.title %>, has been reviewed by admins on <%= link_to "FirstToDisclose", root_url %> and has been removed from suspension. No further action is required from you, and your innovation can once again be found <%= link_to "here", innovation_url(@innovation) %>.
+</p>
