@@ -18,6 +18,7 @@ class Admin::InnovationsController < ApplicationController
   def update
     @innovation = Innovation.find(params[:id])
     if @innovation.update(hidden: !@innovation.hidden?)
+      @innovation.send_notification
       flash[:notice] = "Innovation Status Updated"
       redirect_to admin_innovation_path(@innovation)
     else

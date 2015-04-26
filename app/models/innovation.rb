@@ -75,4 +75,12 @@ class Innovation < ActiveRecord::Base
   def self.visible
     where(hidden: false)
   end
+
+  def send_notification
+    if hidden?
+      SuspensionNotification.notification(self).deliver
+    else
+      UnsuspensionNotification.notification(self).deliver
+    end
+  end
 end
