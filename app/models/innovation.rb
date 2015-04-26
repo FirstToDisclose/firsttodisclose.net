@@ -67,4 +67,8 @@ class Innovation < ActiveRecord::Base
                              user: user,
                              innovation: self)
   end
+
+  def hidden?
+    self.hidden
+  end
 end
