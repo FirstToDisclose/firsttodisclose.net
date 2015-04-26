@@ -1,0 +1,43 @@
+<% if signed_in? && @innovation.reviewable_by?(current_user) %>
+  <%= render partial: "innovations/review_fields" %>
+<% end %>
+
+<h3><%= @innovation.title %></h3>
+
+<% if @innovation.hidden? %>
+  <h3 class='alert'>This Innovation is currently hidden</h3>
+  <%= link_to "Unhide Innovation", admin_innovation_path(@innovation), method: :put %>
+<% else %>
+  <%= link_to "Hide Innovation", admin_innovation_path(@innovation), method: :put %>
+<% end %>
+
+<h3>Abstract:</h3>
+<%= @markdown_abstract %>
+
+
+<h3>Body:</h3>
+<%= @markdown_body %>
+
+<% if @innovation.revisions.any? %>
+  <%= link_to "View Revision History", revisions_path({ innovation_id: @innovation.id }) %>
+<% end %>
+
+<% if @innovation.tags.any? %>
+  <h3>Tags:</h3>
+  <% @innovation.tags.each do |tag| %>
+    <div><%= link_to tag.name, tag_path(tag) %></div>
+  <% end %>
+<% end %>
+
+<p>
+  <% if current_user && current_user.id == @innovation.user_id %>
+    <%= link_to 'Edit', edit_innovation_path(@innovation) %> |
+  <% end %>
+  <%= link_to 'Back', innovations_path %>
+</p>
+
+
+
+<% if @innovation.reviews.any? %>
+  <%= render partial: "innovations/review_list" %>
+<% end %>

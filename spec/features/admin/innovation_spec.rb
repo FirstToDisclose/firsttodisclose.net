@@ -15,9 +15,23 @@ describe "Admin: Innovations" do
 
       click_link "Hide #{@innovation.title}"
 
+      expect(page).to have_link "Unhide Innovation"
+      expect(page).to have_content "This Innovation is currently hidden"
+
+      visit admin_innovations_path
+
       expect(page).not_to have_link "Hide #{@innovation.title}"
       expect(page).to have_link "Unhide #{@innovation.title}"
       expect(page).to have_content "Hidden - #{@innovation.title}"
+    end
+
+    it "can be done by admins from the show page" do
+      visit admin_innovation_path(@innovation)
+
+      click_link "Hide Innovation"
+
+      expect(page).to have_link "Unhide Innovation"
+      expect(page).to have_content "This Innovation is currently hidden"
     end
   end
 end

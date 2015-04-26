@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :innovations, only: [:index, :update]
+    resources :innovations, only: [:index, :show, :update]
   end
 
   resources :tags, only: [:show, :index]
