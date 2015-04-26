@@ -41,4 +41,8 @@ class User < ActiveRecord::Base
     self.reviewer
   end
 
+  def admin?
+    self.admin
+  end
+
 end

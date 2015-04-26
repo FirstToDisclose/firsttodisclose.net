@@ -1,6 +1,7 @@
 class InnovationsController < ApplicationController
   before_action :set_innovation, only: [:show, :edit, :update, :destroy]
   before_action :clone_innovation, only: [:update, :destroy]
+  before_action :check_if_hidden, only: [:show]
   before_filter :check_privileges!, only: [:new, :create, :edit, :save]
 
   def check_privileges!
@@ -12,13 +13,12 @@ class InnovationsController < ApplicationController
   # GET /innovations
   # GET /innovations.json
   def index
-      @innovations = Innovation.all
+      @innovations = Innovation.visible
   end
 
   # GET /innovations/1
   # GET /innovations/1.json
   def show
-    @innovation = Innovation.find(params[:id])
     @review = Review.new
     markdown = Redcarpet::Markdown.new(Redcarpet::Render::Safe, safe_links_only: true, escape_html: true, no_styles: true)
     @markdown_abstract = markdown.render(@innovation.abstract).html_safe
@@ -90,5 +90,11 @@ class InnovationsController < ApplicationController
 
     def clone_innovation
       @innovation.clone
+    end
+
+    def check_if_hidden
+      if @innovation.hidden?
+        render "innovations/hidden"
+      end
     end
 end

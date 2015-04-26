@@ -1,0 +1,20 @@
+<h1>Listing Innovations</h1>
+
+<% @innovations.each do |innovation| %>
+  <% if innovation.hidden? %>
+    <h2><%= link_to "Hidden - #{innovation.title}", innovation_path(innovation) %></h2>
+  <% else %>
+    <h2><%= link_to innovation.title, innovation_path(innovation) %></h2>
+  <% end %>
+  <% if innovation.hidden? %>
+    <%= link_to "Unhide #{innovation.title}", admin_innovation_path(innovation), method: :put %>
+  <% else %>
+    <%= link_to "Hide #{innovation.title}", admin_innovation_path(innovation), method: :put %>
+  <% end %>
+  <blockquote><%= innovation.abstract %></blockquote>
+  <p><%= innovation.body %></p>
+  <hr/>
+<% end %>
+
+
+<%= link_to 'New Innovation', new_innovation_path %>
