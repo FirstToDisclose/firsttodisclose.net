@@ -94,4 +94,14 @@ describe "Innovations" do
       expect(page).not_to have_link innovation.title
     end
   end
+
+  feature "hidden page" do
+    it "is shown instead of the Innovation page when hidden" do
+      innovation = FactoryGirl.create(:innovation, hidden: true)
+
+      visit innovation_path(innovation)
+
+      expect(page).to have_content "This innovation is currently under review"
+    end
+  end
 end
