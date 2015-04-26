@@ -51,11 +51,11 @@ class Innovation < ActiveRecord::Base
     reviews.sum(:usability_rating).to_f / reviews.count
   end
 
-  def fourth_score
+  def tooling_score
     reviews.sum(:fourth_rating).to_f / reviews.count
   end
 
-  def fifth_score
+  def lifespan_score
     reviews.sum(:fifth_rating).to_f / reviews.count
   end
 
