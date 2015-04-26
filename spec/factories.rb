@@ -1,4 +1,9 @@
 FactoryGirl.define do
+
+  factory :live_page do
+    hangout_url "https://plus.google.com/hangouts/_/calendar/amFzb253YWxzaEBnbWFpbC5jb20.u9mdnlukpn0hnps53sd38l258k?authuser=0"
+  end
+
   factory :collection_innovation do
 
   end

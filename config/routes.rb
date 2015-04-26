@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :tags, only: [:show, :index]
   resources :search, only: [:index]
   resources :revisions, only: [:index, :show]
+  resources :live_pages, only: [:index, :new, :create]
 
   get 'faq/index'
 
