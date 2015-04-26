@@ -1,5 +1,6 @@
 class InnovationsController < ApplicationController
   before_action :set_innovation, only: [:show, :edit, :update, :destroy]
+  before_action :check_ownership, only: [:edit, :update, :destroy]
   before_action :clone_innovation, only: [:update, :destroy]
   before_action :check_if_hidden, only: [:show]
   before_filter :check_privileges!, only: [:new, :create, :edit, :save]
@@ -90,6 +91,13 @@ class InnovationsController < ApplicationController
 
     def clone_innovation
       @innovation.clone
+    end
+
+    def check_ownership
+      unless current_user.admin? || @innovation.user == current_user
+        flash[:notice] = "You don't have permission to do that"
+        redirect_to innovation_path(@innovation)
+      end
     end
 
     def check_if_hidden

@@ -24,6 +24,7 @@ FactoryGirl.define do
   end
 
   factory :innovation do
+    user
     sequence(:title) { |n| "My invention#{n}'s title" }
     abstract "It does amazing things" * 10
     body "Here is a description of how it works" * 30
