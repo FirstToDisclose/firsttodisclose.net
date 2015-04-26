@@ -1,5 +1,5 @@
 class InnovationSerializer < ActiveModel::Serializer
-  attributes :title, :abstract, :body, :consented, :novelty_score, :value_score, :usability_score, :tooling_score, :lifespan_score
+  attributes :id, :title, :abstract, :body, :consented, :novelty_score, :value_score, :usability_score, :tooling_score, :lifespan_score
 
   has_many :tags, through: :innovation_tags
   has_many :collections, through: :collection_innovations
