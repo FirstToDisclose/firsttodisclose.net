@@ -40,23 +40,23 @@ class Innovation < ActiveRecord::Base
   end
 
   def novelty_score
-    reviews.sum(:novelty_rating).to_f / reviews.count
+    reviews.count >= 1 ? reviews.sum(:novelty_rating).to_f / reviews.count : nil
   end
 
   def value_score
-    reviews.sum(:value_rating).to_f / reviews.count
+    reviews.count >= 1 ? reviews.sum(:value_rating).to_f / reviews.count : nil
   end
 
   def usability_score
-    reviews.sum(:usability_rating).to_f / reviews.count
+    reviews.count >= 1 ? reviews.sum(:usability_rating).to_f / reviews.count : nil
   end
 
-  def fourth_score
-    reviews.sum(:fourth_rating).to_f / reviews.count
+  def tooling_score
+    reviews.count >= 1 ? reviews.sum(:fourth_rating).to_f / reviews.count : nil
   end
 
-  def fifth_score
-    reviews.sum(:fifth_rating).to_f / reviews.count
+  def lifespan_score
+    reviews.count >= 1 ? reviews.sum(:fifth_rating).to_f / reviews.count : nil
   end
 
   def clone

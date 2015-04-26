@@ -15,6 +15,10 @@ class InnovationsController < ApplicationController
   # GET /innovations.json
   def index
       @innovations = Innovation.visible
+      respond_to do |format|
+        format.html { render :index }
+        format.json { render json: @innovations }
+      end
   end
 
   # GET /innovations/1
@@ -81,7 +85,7 @@ class InnovationsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_innovation
-      @innovation = Innovation.find(params[:id])
+      @innovation = Innovation.includes(:collections).find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
