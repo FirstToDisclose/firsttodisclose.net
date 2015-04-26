@@ -1,6 +1,7 @@
 class Collection < ActiveRecord::Base
   has_many :collection_innovations
   has_many :innovations, through: :collection_innovations
+  has_one :event
   belongs_to :user
 
   validates :title, presence: true, length: { maximum: 250 }
