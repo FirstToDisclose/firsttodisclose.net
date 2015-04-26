@@ -4,5 +4,5 @@ class InnovationSerializer < ActiveModel::Serializer
   has_many :tags, through: :innovation_tags
   has_many :collections, through: :collection_innovations, serializer: CollectionsForInnovationSerializer
   has_many :reviews
-  has_many :revisions
+  has_many :revisions, serializer: RevisionsForInnovationSerializer
 end
