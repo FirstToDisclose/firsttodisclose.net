@@ -39,6 +39,8 @@
 
 Tests will be run from TravisCI. 
 
+[![Build Status](https://travis-ci.org/FirstToDisclose/firsttodisclose.net.svg)](https://travis-ci.org/FirstToDisclose/firsttodisclose.net)
+
 == About
 
 {<img src="https://codeclimate.com/github/FirstToDisclose/firsttodisclose.net/badges/gpa.svg" />}[https://codeclimate.com/github/FirstToDisclose/firsttodisclose.net]
