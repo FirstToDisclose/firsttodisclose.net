@@ -1,2 +1,5 @@
 language: ruby
 sudo: required
+
+before_script:
+  - psql -c 'create database first_to_disclose_test;' -U postgres
