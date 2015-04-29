@@ -35,6 +35,10 @@
   heroku config:add GITHUB_KEY=${FB_ID} --remote test
   heroku config:add GITHUB_SECRET=${FB_SECRET} --remote test
 
+* Continuous Deployment 
+
+Tests will be run from TravisCI. 
+
 == About
 
 {<img src="https://codeclimate.com/github/FirstToDisclose/firsttodisclose.net/badges/gpa.svg" />}[https://codeclimate.com/github/FirstToDisclose/firsttodisclose.net]
