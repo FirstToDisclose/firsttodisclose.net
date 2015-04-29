@@ -29,7 +29,7 @@ gem 'devise', '~> 3.4'
 gem 'omniauth', '~> 1.2'
 gem 'omniauth-github', '~> 1.1'
 gem 'omniauth-google-oauth2', '~> 0.2'
-gem 'omniauth-mit', '~> 0.9', :github => 'FirstToDisclose/omniauth-mit'
+gem 'omniauth-mit', '0.9.1', :github => 'FirstToDisclose/omniauth-mit'
 
 # environments
 gem 'figaro', '~> 1.1'
