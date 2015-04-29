@@ -257,7 +257,7 @@ DEPENDENCIES
   omniauth (~> 1.2)
   omniauth-github (~> 1.1)
   omniauth-google-oauth2 (~> 0.2)
-  omniauth-mit (~> 0.9)!
+  omniauth-mit (= 0.9.1)!
   pg (~> 0.18)
   pry
   rails (= 4.2.1)
