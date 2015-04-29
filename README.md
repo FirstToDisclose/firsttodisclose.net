@@ -23,17 +23,16 @@ can be found at [LegalAppathon.com](http://LegalAppathon.com).
 
 ## What do I Need to Know to Contribute?
 
- The FirstToDisclose code-base was refactored into a Rails App, housed
- and developed in this GitHub repository, by a team of volunteer civic
- hackers who meet at MIT weekly (or more often) to move the project
- forward.  Weekly project collaboration working meetings are generously
- hosted (with Pizza!) by the Code for America Boston Brigade, at the
- Cambridge Innovation Center on Tuesday evenings.  The project is
- primarily organized using Slack and GitHub issues.  In addition to the
- files, issues and wiki in this GitHub repository, see the
- FirstToDisclose.info and law.MIT.edu/FirstToDisclose sites for more
- information on the project.
-  
+The FirstToDisclose code-base was refactored into a Rails App, housed
+and developed in this GitHub repository, by a team of volunteer civic
+hackers who meet at MIT weekly (or more often) to move the project
+forward.  Weekly project collaboration working meetings are generously
+hosted (with Pizza!) by the Code for America Boston Brigade, at the
+Cambridge Innovation Center on Tuesday evenings.  The project is
+primarily organized using Slack and GitHub issues.  In addition to the
+files, issues and wiki in this GitHub repository, see the
+FirstToDisclose.info and law.MIT.edu/FirstToDisclose sites for more
+information on the project.
 
 # Setup
 
@@ -41,27 +40,28 @@ can be found at [LegalAppathon.com](http://LegalAppathon.com).
 
 - Environment
 
-  cp config/application.sample.yml config/application.yml
+    cp config/application.sample.yml config/application.yml
+
+  Obtain a current `application.yml` from Slack. 
 
 - System dependencies: Postgres
 
 - Database initialization
 
-  rake db:create
+    rake db:create
 
 - How to run the test suite
 
-  rake
+    rake
 
 - Deployment instructions
 
-  heroku login
+    heroku login
 
-  git push heroku master
-  heroku run rake db:migrate
+    git push heroku master
+    heroku run rake db:migrate
 
-  heroku config:add GITHUB_KEY=${FB_ID} --remote test
-  heroku config:add GITHUB_SECRET=${FB_SECRET} --remote test
+    figaro heroku:set -e production
 
 # Continuous Deployment 
 
