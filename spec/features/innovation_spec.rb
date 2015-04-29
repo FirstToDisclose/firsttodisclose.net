@@ -34,7 +34,7 @@ describe "Innovations" do
       expect(page).to have_content title
     end
 
-    it "preserves text" do
+    xit "preserves text" do
       visit new_innovation_path
 
       title = "preserves text: *foo*"
