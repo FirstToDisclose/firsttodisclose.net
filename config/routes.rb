@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   resources :live_pages, only: [:index, :new, :create]
 
   get 'faq/index'
+  get '/accept_terms', to: 'redirect_to_accept_terms#show'
+  put '/accept_terms', to: 'redirect_to_accept_terms#update'
 
   root 'welcome#index'
 
@@ -28,5 +30,10 @@ Rails.application.routes.draw do
     get '/logout', to: 'devise/sessions#destroy', as: :signout
 
   end
+
+  #agreement to site-wide consent
+
+  #redirect to consent form
+
 
 end
