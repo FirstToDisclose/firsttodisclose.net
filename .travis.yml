@@ -1,14 +1,14 @@
 language: ruby
+
 rvm:
-- 2.0.0
-- 1.9.3
-- jruby-19mode
-- rbx-2
+  - 2.0.0
+
 sudo: required
 
 before_script:
   - psql -c 'create database first_to_disclose_test;' -U postgres
 
 script:
-- bundle exec rake db:create db:migrate DATABASE_URL=postgres://localhost/first_to_disclose_test
-- bundle exec rspec spec
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - bundle exec rake db:test:prepare
+  - bundle exec rspec spec/
