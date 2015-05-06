@@ -1,11 +1,6 @@
 class AcceptTermsController < ApplicationController
-	before_filter :accepted_terms
-	def accepted_terms
-	    unless !current_user.accepted_terms
-	      redirect_to '/'
-    	end
-  	end
-  	
+	before_filter :check_if_accepted_terms
+	
 	def edit
 	end
 
@@ -18,4 +13,11 @@ class AcceptTermsController < ApplicationController
 			redirect_to '/innovations/new'
 		end
 	end
+
+	private
+	def check_if_accepted_terms
+	    if current_user.accepted_terms
+			redirect_to root_path
+		end
+  	end
 end
