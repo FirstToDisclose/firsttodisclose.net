@@ -6,6 +6,7 @@ class AcceptTermsController < ApplicationController
 		if params[:Accept]
 			Rails.logger.info "that's consent"
 			current_user.accepted_terms = true
+			current_user.accepted_terms_time = DateTime.now
 			current_user.save
 			redirect_to '/innovations/new'
 		end
