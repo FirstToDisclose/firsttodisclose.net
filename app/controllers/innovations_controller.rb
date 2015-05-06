@@ -13,9 +13,7 @@ class InnovationsController < ApplicationController
   end
 
   def accepted_terms
-    if current_user.accepted_terms
-      return true
-    else 
+    unless current_user.accepted_terms
       redirect_to '/accept_terms'
     end
   end

@@ -17,8 +17,8 @@ Rails.application.routes.draw do
   resources :live_pages, only: [:index, :new, :create]
 
   get 'faq/index'
-  get '/accept_terms', to: 'redirect_to_accept_terms#show'
-  put '/accept_terms', to: 'redirect_to_accept_terms#update'
+  get '/accept_terms', to: 'accept_terms#edit'
+  put '/accept_terms', to: 'accept_terms#update'
 
   root 'welcome#index'
 
