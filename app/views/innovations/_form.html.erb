@@ -34,7 +34,7 @@
   <%= f.hidden_field :innovation_tags, id: "hidden-tag-field" %>
 
 
-  <input data-role="tagsinput" id="tags">
+  <input id="tags">
 
 
   <div class="actions">
@@ -57,6 +57,12 @@ $('input').on('itemAdded', function() {
 
 $('input').on('itemRemoved', function() {
   updateTagList();
+});
+
+$(function() {
+  $("#tags").tagsinput({
+    confirmKeys: [13, 9]
+  })
 });
 
 </script>
