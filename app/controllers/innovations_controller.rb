@@ -4,10 +4,17 @@ class InnovationsController < ApplicationController
   before_action :clone_innovation, only: [:update, :destroy]
   before_action :check_if_hidden, only: [:show]
   before_filter :check_privileges!, only: [:new, :create, :edit, :save]
+  before_filter :accepted_terms, only: [:new, :create]
 
   def check_privileges!
     if !user_signed_in?
       redirect_to "/users/sign_in", :notice =>  "You must have an account to submit innovations."
+    end
+  end
+
+  def accepted_terms
+    unless current_user.accepted_terms
+      redirect_to '/accept_terms'
     end
   end
 
