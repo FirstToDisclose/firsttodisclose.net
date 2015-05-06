@@ -404,7 +404,7 @@
         $input.attr('size', Math.max(this.inputSize, $input.val().length));
       }, self));
 
-      self.$container.on('keypress', 'input', $.proxy(function(event) {
+      self.$container.on('keydown', 'input', $.proxy(function(event) {
          var $input = $(event.target);
 
          if (self.$element.attr('disabled')) {
