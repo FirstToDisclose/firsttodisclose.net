@@ -26,6 +26,7 @@ FactoryGirl.define do
     sequence(:email) { |n| "user#{n}@example.com" }
     password "password"
     reviewer false
+    accepted_terms true
   end
 
   factory :innovation do
