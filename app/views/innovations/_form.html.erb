@@ -46,16 +46,16 @@
 
 // Helper function for updating value of tags
 function updateTagList(){
-    var taglist = $('#tags').tagsinput('items');
-    // Find hidden field
-    $('#hidden-tag-field').val(taglist);
+  var taglist = $('#tags').tagsinput('items');
+  // Set hidden field's value attribute
+  $('#hidden-tag-field').val(taglist);
 }
 
-$('input').on('itemAdded', function() {
+$('#tags').on('itemAdded', function() {
   updateTagList();
 });
 
-$('input').on('itemRemoved', function() {
+$('#tags').on('itemRemoved', function() {
   updateTagList();
 });
 
@@ -65,7 +65,7 @@ $(function() {
   })
 });
 
-$('input').ready(function() {
+$('#tags').ready(function() {
   $('#hidden-tag-field').val("")
   <% @innovation.tags.each do |tag| %>
     $('#tags').tagsinput('add', "<%= tag.name %>");

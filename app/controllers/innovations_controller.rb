@@ -69,7 +69,7 @@ class InnovationsController < ApplicationController
   # PATCH/PUT /innovations/1.json
   def update
     respond_to do |format|
-      if @innovation.update(innovation_params)
+      if @innovation.update(innovation_params) && @innovation.create_tags(params)
         format.html { redirect_to @innovation, notice: 'innovation was successfully updated.' }
         format.json { head :no_content }
       else

@@ -16,9 +16,10 @@ class Innovation < ActiveRecord::Base
   def create_tags(params)
     tags = params[:innovation][:innovation_tags].split(",")
     # Create tag and Innovation tag
+    self.innovation_tags.destroy_all
     tags.each do |tag_name|
       tag = Tag.find_or_create_by(name: tag_name)
-      innovation_tag = InnovationTag.create(tag: tag, innovation: self)
+      innovation_tag = self.innovation_tags.create(tag: tag)
       if !tag.save || !innovation_tag.save
         return false
       end
