@@ -15,14 +15,3 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
-
-$(document).ready(function(){
-	$("#oauthLogin").click(function(){
-		console.log("That's a click!");
-	});
-});
-
-
-
-
-console.log("js is running");
