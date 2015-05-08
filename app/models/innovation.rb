@@ -78,9 +78,9 @@ class Innovation < ActiveRecord::Base
 
   def send_notification
     if hidden?
-      SuspensionNotification.notification(self).deliver
+      SuspensionNotification.notification(self).deliver_now
     else
-      UnsuspensionNotification.notification(self).deliver
+      UnsuspensionNotification.notification(self).deliver_now
     end
   end
 end
