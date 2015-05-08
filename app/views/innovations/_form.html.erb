@@ -1,4 +1,4 @@
-<%= form_for(@innovation) do |f| %>
+<%= form_for @innovation, :html=> {:id => 'innovation_form'} do |f| %>
   <% if @innovation.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@innovation.errors.count, "error") %> prohibited this innovation from being saved:</h2>
@@ -38,7 +38,7 @@
 
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit id: "innovation_form_submit"%>
   </div>
 <% end %>
 
@@ -51,9 +51,6 @@ function updateTagList(){
   $('#hidden-tag-field').val(taglist);
 }
 
-$('#tags').on('itemAdded', function() {
-  updateTagList();
-});
 
 $('#tags').on('itemRemoved', function() {
   updateTagList();
@@ -66,10 +63,18 @@ $(function() {
 });
 
 $('#tags').ready(function() {
+  console.log("tags are ready");
   $('#hidden-tag-field').val("")
   <% @innovation.tags.each do |tag| %>
     $('#tags').tagsinput('add', "<%= tag.name %>");
+    
   <% end %>
+});
+
+$("#innovation_form_submit").click(function(e){
+  e.preventDefault();
+  updateTagList();
+  $("#innovation_form").submit();
 });
 
 </script>
