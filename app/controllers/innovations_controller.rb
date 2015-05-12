@@ -6,26 +6,14 @@ class InnovationsController < ApplicationController
   before_filter :check_privileges!, only: [:new, :create, :edit, :save]
   before_filter :accepted_terms, only: [:new, :create]
 
-  def check_privileges!
-    if !user_signed_in?
-      redirect_to "/users/sign_in", :notice =>  "You must have an account to submit innovations."
-    end
-  end
-
-  def accepted_terms
-    unless current_user.accepted_terms
-      redirect_to '/accept_terms'
-    end
-  end
-
   # GET /innovations
   # GET /innovations.json
   def index
-      @innovations = Innovation.visible
-      respond_to do |format|
-        format.html { render :index }
-        format.json { render json: @innovations }
-      end
+    @innovations = Innovation.visible
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @innovations }
+    end
   end
 
   # GET /innovations/1
@@ -90,30 +78,43 @@ class InnovationsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_innovation
-      @innovation = Innovation.includes(:collections).find(params[:id])
+  
+  # Use callbacks to share common setup or constraints between actions.
+  def check_privileges!
+    if !user_signed_in?
+      redirect_to "/users/sign_in", :notice =>  "You must have an account to submit innovations."
     end
+  end
+  
+  def accepted_terms
+    unless current_user.accepted_terms
+      redirect_to '/accept_terms'
+    end
+  end
+  
+  def set_innovation
+    @innovation = Innovation.includes(:collections).find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def innovation_params
-      params.require(:innovation).permit(:title, :abstract, :body, :consented)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def innovation_params
+    params.require(:innovation).permit(:title, :abstract, :body, :consented)
+  end
 
-    def clone_innovation
-      @innovation.clone
-    end
+  def clone_innovation
+    @innovation.clone
+  end
 
-    def check_ownership
-      unless current_user.admin? || @innovation.user == current_user
-        flash[:notice] = "You don't have permission to do that"
-        redirect_to innovation_path(@innovation)
-      end
+  def check_ownership
+    unless current_user.admin? || @innovation.user == current_user
+      flash[:notice] = "You don't have permission to do that"
+      redirect_to innovation_path(@innovation)
     end
+  end
 
-    def check_if_hidden
-      if @innovation.hidden?
-        render "innovations/hidden"
-      end
+  def check_if_hidden
+    if @innovation.hidden?
+      render "innovations/hidden"
     end
+  end
 end
