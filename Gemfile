@@ -19,7 +19,7 @@ gem 'font-awesome-rails'
 gem 'google-webfonts-rails', '~> 0.0.4'
 
 # ams for building json
-gem 'active_model_serializers', '~> 0.9'
+gem 'active_model_serializers', '~> 0.8.0'
 
 # search functionality
 gem 'textacular', '~> 3.0'
