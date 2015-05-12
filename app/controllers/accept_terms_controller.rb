@@ -1,23 +1,30 @@
 class AcceptTermsController < ApplicationController
-	before_filter :check_if_accepted_terms
-	
-	def edit
-	end
+  before_filter :check_if_accepted_terms
+  before_filter :check_params
 
-	def update	
-		if params[:Accept]
-			Rails.logger.info "that's consent"
-			current_user.accepted_terms = true
-			current_user.accepted_terms_time = DateTime.now
-			current_user.save
-			redirect_to '/innovations/new'
-		end
-	end
+  def edit
+  end
 
-	private
-	def check_if_accepted_terms
-	    if current_user.accepted_terms
-			redirect_to root_path
-		end
-  	end
+  def update	
+    Rails.logger.info "#{current_user.email} has accepted the terms"
+    if current_user.update(accepted_terms: true, accepted_terms_time; DateTime.now)
+      redirect_to '/innovations/new'
+    else
+      render :edit
+    end
+  end
+
+  private
+
+  def check_if_accepted_terms
+    if current_user.accepted_terms
+      redirect_to root_path
+    end
+  end
+  
+  def check_params
+    unless params[:Accept]
+      redirect_to :edit
+    end
+  end
 end
