@@ -7,6 +7,13 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create]
   end
 
+  namespace :api do
+    namespace :v1 do
+      resources :innovations
+      resources :collections
+    end
+  end
+
   namespace :admin do
     resources :innovations, only: [:index, :show, :update]
   end

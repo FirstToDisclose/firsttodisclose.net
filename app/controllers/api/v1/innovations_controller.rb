@@ -1,4 +1,4 @@
-class InnovationsController < ApplicationController
+class Api::V1::InnovationsController < ApplicationController
   before_action :set_innovation, only: [:show, :edit, :update, :destroy]
   before_action :check_ownership, only: [:edit, :update, :destroy]
   before_action :clone_innovation, only: [:update, :destroy]
@@ -8,61 +8,51 @@ class InnovationsController < ApplicationController
 
   def check_privileges!
     if !user_signed_in?
-      redirect_to "/users/sign_in", :notice =>  "You must have an account to submit innovations."
+      render json: { error: "You must authenticate" }.to_json
     end
   end
 
   def accepted_terms
     unless current_user.accepted_terms
-      redirect_to '/accept_terms'
+      render json: { error: "You must accept the site terms before continuing" }.to_json
     end
   end
 
-  # GET /innovations
+  # GET /api/v1/innovations
   def index
     @innovations = Innovation.visible
+    render json: @innovations
   end
 
-  # GET /innovations/1
+  # GET /api/v1/innovations/1
   def show
     @review = Review.new
-    markdown = Redcarpet::Markdown.new(Redcarpet::Render::Safe, safe_links_only: true, escape_html: true, no_styles: true)
-    @markdown_abstract = markdown.render(@innovation.abstract).html_safe
-    @markdown_body = markdown.render(@innovation.body).html_safe
+    render json: @innovation
   end
 
-  # GET /innovations/new
-  def new
-    @innovation = current_user.innovations.new
-  end
-
-  # GET /innovations/1/edit
-  def edit
-  end
-
-  # POST /innovations
+  # POST /api/v1/innovations
   def create
     @innovation = current_user.innovations.new(innovation_params)
     if @innovation.save && @innovation.create_tags(params)
-      redirect_to @innovation, notice: 'Innovation was successfully created.'
+      render json: @innovation, status: :created, location: innovation_path(@innovation)
     else
-      render :new
+      render json: @innovation.errors, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /innovations/1
+  # PATCH/PUT /api/v1/innovations/1
   def update
     if @innovation.update(innovation_params) && @innovation.create_tags(params)
-      redirect_to @innovation, notice: 'innovation was successfully updated.'
+      head :no_content
     else
-      render :edit
+      render json: @innovation.errors, status: :unprocessable_entity
     end
   end
 
-  # DELETE /innovations/1
+  # DELETE /api/v1/innovations/1
   def destroy
     @innovation.destroy
-    redirect_to innovations_url, notice: 'innovation was successfully destroyed.'
+    head :no_content
   end
 
   private
@@ -83,14 +73,13 @@ class InnovationsController < ApplicationController
 
   def check_ownership
     unless current_user.admin? || @innovation.user == current_user
-      flash[:notice] = "You don't have permission to do that"
-      redirect_to innovation_path(@innovation)
+      render json: { error: "You aren't authorized to do that" }.to_json
     end
   end
 
   def check_if_hidden
     if @innovation.hidden?
-      render "innovations/hidden"
+      render json: { error: "Innovation is under review by site administrators" }.to_json
     end
   end
 end
