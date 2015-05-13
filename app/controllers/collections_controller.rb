@@ -15,18 +15,10 @@ class CollectionsController < ApplicationController
 
   def show
     @collection = Collection.includes(:innovations).find(params[:id])
-    respond_to do |format|
-      format.html { render :show }
-      format.json { render json: @collection }
-    end
   end
 
   def index
     @collections = Collection.includes(:innovations).all
-    respond_to do |format|
-      format.html { render :index }
-      format.json { render json: @collections }
-    end
   end
 
   def edit
