@@ -6,18 +6,6 @@ class InnovationsController < ApplicationController
   before_filter :check_privileges!, only: [:new, :create, :edit, :save]
   before_filter :accepted_terms, only: [:new, :create]
 
-  def check_privileges!
-    if !user_signed_in?
-      redirect_to "/users/sign_in", :notice =>  "You must have an account to submit innovations."
-    end
-  end
-
-  def accepted_terms
-    unless current_user.accepted_terms
-      redirect_to '/accept_terms'
-    end
-  end
-
   # GET /innovations
   def index
     @innovations = Innovation.visible
@@ -65,9 +53,19 @@ class InnovationsController < ApplicationController
     redirect_to innovations_url, notice: 'innovation was successfully destroyed.'
   end
 
-  private
-
   # Use callbacks to share common setup or constraints between actions.
+  def check_privileges!
+    if !user_signed_in?
+      redirect_to "/users/sign_in", :notice =>  "You must have an account to submit innovations."
+    end
+  end
+
+  def accepted_terms
+    unless current_user.accepted_terms
+      redirect_to '/accept_terms'
+    end
+  end
+
   def set_innovation
     @innovation = Innovation.includes(:collections).find(params[:id])
   end
