@@ -20,16 +20,16 @@ class User < ActiveRecord::Base
     user
   end
 
-  def find_or_create_user(auth)
+  def self.find_or_create_user(auth)
     find_user_by_email(auth).nil? ? create_user_from_oauth(auth) : find_user_by_email(auth)
   end
 
-  def find_user_by_email(auth)
+  def self.find_user_by_email(auth)
     email = auth.info.email
     user = User.where(:email => email).first if email
   end
 
-  def create_user_from_oauth(auth)
+  def self.create_user_from_oauth(auth)
     user = User.new(
       name: auth.extra.raw_info.name,
       email: email,
