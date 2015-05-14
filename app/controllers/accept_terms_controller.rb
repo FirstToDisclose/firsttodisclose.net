@@ -5,9 +5,9 @@ class AcceptTermsController < ApplicationController
   def edit
   end
 
-  def update	
+  def update
     Rails.logger.info "#{current_user.email} has accepted the terms"
-    if current_user.update(accepted_terms: true, accepted_terms_time; DateTime.now)
+    if current_user.update(accepted_terms: true, accepted_terms_time: DateTime.now)
       redirect_to '/innovations/new'
     else
       render :edit
@@ -21,10 +21,10 @@ class AcceptTermsController < ApplicationController
       redirect_to root_path
     end
   end
-  
+
   def check_params
     unless params[:Accept]
-      redirect_to :edit
+      render :edit
     end
   end
 end
