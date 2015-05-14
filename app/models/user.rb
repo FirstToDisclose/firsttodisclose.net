@@ -10,30 +10,32 @@ class User < ActiveRecord::Base
   has_many :revisions
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
-
     identity = Identity.find_for_oauth(auth)
     user = signed_in_resource ? signed_in_resource : identity.user
-
     if user.nil?
-
-      email = auth.info.email
-      user = User.where(:email => email).first if email
-
-      if user.nil?
-        user = User.new(
-          name: auth.extra.raw_info.name,
-          email: email,
-          password: Devise.friendly_token[0,20]
-        )
-        user.save!
-      end
+      user = find_or_create_user(auth)
     end
+    # Associate the identity with the user in case needed
+    identity.update!(user: user)
+    user
+  end
 
-    # Associate the identity with the user if needed
-    if identity.user != user
-      identity.user = user
-      identity.save!
-    end
+  def find_or_create_user(auth)
+    find_user_by_email(auth).nil? ? create_user_from_oauth(auth) : find_user_by_email(auth)
+  end
+
+  def find_user_by_email(auth)
+    email = auth.info.email
+    user = User.where(:email => email).first if email
+  end
+
+  def create_user_from_oauth(auth)
+    user = User.new(
+      name: auth.extra.raw_info.name,
+      email: email,
+      password: Devise.friendly_token[0,20]
+    )
+    user.save!
     user
   end
 
