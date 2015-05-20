@@ -8,7 +8,7 @@ describe "LivePages" do
 
       visit live_pages_path
 
-      page.should have_xpath("//iframe[@src='#{hangout.hangout_url}']")
+      expect(page).to have_xpath("//iframe[@src='#{hangout.hangout_url}']")
     end
   end
 end
