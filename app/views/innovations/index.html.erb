@@ -1,10 +1,22 @@
 <h1>Listing Innovations</h1>
 
-<% @innovations.each do |innovation| %>
-  <h2><%= link_to innovation.title, innovation_path(innovation) %></h2>
-  <blockquote><%= innovation.abstract %></blockquote>
-  <p><%= innovation.body %></p>
-  <hr/>
+<%= form_tag "/search", method: :get, class: "navbar-form" do %>
+  <div class="form-group">
+    <%= text_field_tag :search %>
+  </div>
+
+  <%= submit_tag "Search", class: "btn btn-default" %>
+<% end %>
+
+<% if !@innovations.blank? %>
+  <% @innovations.each do |innovation| %>
+    <h2><%= link_to innovation.title, innovation_path(innovation) %></h2>
+    <blockquote><%= innovation.abstract %></blockquote>
+    <p><%= innovation.body %></p>
+    <hr/>
+  <% end %>
+<% else %>
+  <p>Sorry, there were no innovations found</p>
 <% end %>
 
 <%= link_to 'New Innovation', new_innovation_path %>

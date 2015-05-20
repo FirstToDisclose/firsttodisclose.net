@@ -31,11 +31,9 @@
                   {:controller => '/collections', :action => 'index'} %></li>
           <li><%= link_to "FAQ",
                   {:controller => '/faq', :action => 'index'} %></li>
-          <li><%= link_to "Search", search_index_path %></li>
 
-          
         </ul>
-        
+
         <ul class="nav navbar-nav navbar-right">
           <% if current_user %>
           Welcome, <%= current_user.name %> <%= link_to "Logout", "/logout" %>
@@ -46,9 +44,9 @@
           :action => 'edit'} %>
           <% end %>
         </ul>
-      </div> 
+      </div>
 
-      
+
 
 <%= render "devise/login_menu" %>
     </div>

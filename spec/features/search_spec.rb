@@ -2,23 +2,30 @@ require "rails_helper"
 
 describe "Search" do
   feature "Search for an innovation" do
+    before(:each) do
+      @innovation = FactoryGirl.create(:innovation)
+      visit innovations_path
+    end
+
     it "returns an exisiting innovation" do
-      innovation = FactoryGirl.create(:innovation)
+      fill_in "search", with: @innovation.title
+      click_on "Search"
 
-      visit search_index_path
-      fill_in "search_bar", with: innovation.title
-      click_on "Submit"
-
-      expect(page).to have_content innovation.title
+      expect(page).to have_content "Listing Innovations"
+      expect(page).to have_content @innovation.title
     end
 
     it "returns a message if no innovations are found" do
-      visit search_index_path
-      fill_in "search_bar", with: "Bacon Pancakes"
-      click_on "Submit"
+      fill_in "search", with: "Bacon Pancakes"
+      click_on "Search"
 
-      # Regex below (Capybara won't escape quotes)
-      expect(page).to have_content /No results found for "Bacon Pancakes"/
+      expect(page).to have_content "Sorry, there were no innovations found"
+    end
+
+    it "returns no results for a blank query" do
+      click_on "Search"
+
+      expect(page).to have_content "Sorry, there were no innovations found"
     end
   end
 end
