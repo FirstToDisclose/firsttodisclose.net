@@ -15,7 +15,7 @@ describe "Admin: LivePages" do
       fill_in "Hangout URL", with: hangout_url
       click_on "Submit Hangout"
 
-      page.should have_xpath("//iframe[@src='#{hangout_url}']")
+      expect(page).to have_xpath("//iframe[@src='#{hangout_url}']")
     end
   end
 end

@@ -31,6 +31,6 @@ RSpec.describe Review, type: :model do
     it { should validate_presence_of :fifth_rating }
     it { should validate_numericality_of :fifth_rating }
     it { should validate_inclusion_of(:fifth_rating).in_array([1, 2, 3, 4, 5])}
-    it { should ensure_length_of(:content).is_at_most(10_000) }
+    it { should validate_length_of(:content).is_at_most(10_000) }
   end
 end
