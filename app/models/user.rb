@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :collections
   has_many :reviews
   has_many :revisions
+  has_many :events
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
 

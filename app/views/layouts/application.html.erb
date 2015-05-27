@@ -23,15 +23,21 @@
       </div>
       <div id="navbarCollapse" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-          <li><%= link_to "New Innovation",
-                  {:controller => '/innovations', :action => 'new'} %></li>
-          <li><%= link_to "Innovations",
-                  {:controller => '/innovations', :action => 'index'} %></li>
-          <li><%= link_to "Collections",
-                  {:controller => '/collections', :action => 'index'} %></li>
-          <li><%= link_to "FAQ",
-                  {:controller => '/faq', :action => 'index'} %></li>
-
+          <li>
+            <%= link_to "New Innovation", new_innovation_path %>
+          </li>
+          <li>
+            <%= link_to "New Event", new_event_path %>
+          </li>
+          <li>
+            <%= link_to "Innovations", innovations_path %>
+          </li>
+          <li>
+            <%= link_to "Collections", collections_path %>
+          </li>
+          <li>
+            <%= link_to "FAQ", faq_index_path %>
+          </li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
