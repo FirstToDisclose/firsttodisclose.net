@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create]
   end
 
-  resources :events, only: [:new, :create, :show, :index]
+  resources :events, only: [:new, :create, :show, :index] do
+    resources :collections, only: [:new, :create]
+  end
 
   namespace :api do
     namespace :v1 do

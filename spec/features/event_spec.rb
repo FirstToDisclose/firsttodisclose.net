@@ -47,5 +47,17 @@ describe "Events" do
 
       expect(page).to have_content @collection.title
     end
+
+    it "can make new collections for the event" do
+      visit event_path(@event)
+      click_on "Add New Collection"
+
+      fill_in "Title", with: "A Brand New Collection"
+      click_on "Create Collection"
+
+      expect(page).to have_content "A Brand New Collection"
+      expect(page).to have_content "Collection was successfully created"
+      expect(page).to have_content @event.title
+    end
   end
 end

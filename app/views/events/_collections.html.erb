@@ -1,0 +1,7 @@
+<h3>Collections for this Event</h3>
+
+<% @event.collections.each do |collection| %>
+  <p>
+    <%= link_to collection.title, collection_path(collection) %>
+  </p>
+<% end %>
