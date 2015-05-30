@@ -1,0 +1,8 @@
+<h2>Add <%= @collection.title %> to an Event</h2>
+
+<%= form_for [@collection, @event_collection] do |f| %>
+  <%= f.label :event_id, "Choose an Event" %>
+  <%= f.select :event_id, current_user.events.collect { |event| [event.title, event.id] }, { include_blank: true } %>
+
+  <%= f.submit "Add Collection" %>
+<% end %>

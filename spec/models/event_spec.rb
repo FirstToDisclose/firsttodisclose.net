@@ -16,6 +16,7 @@ RSpec.describe Event, type: :model do
   end
 
   describe "associations" do
+    it { should have_many :event_collections }
     it { should have_many :collections }
     it { should have_many :innovations }
     it { should belong_to :user }

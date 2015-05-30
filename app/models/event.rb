@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
-  has_many :collections
+  has_many :event_collections
+  has_many :collections, through: :event_collections
   has_many :innovations, through: :collections
   belongs_to :user
 

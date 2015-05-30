@@ -25,4 +25,27 @@ describe "Events" do
       expect(page).to have_content "My New Hackathon"
     end
   end
+
+  describe "adding collections" do
+    before(:each) do
+      @user = FactoryGirl.create(:user)
+      @event = FactoryGirl.create(:event, user: @user)
+      @collection = FactoryGirl.create(:collection)
+      login_as(@user)
+    end
+
+    it "can be added from the collection page" do
+      visit collection_path(@collection)
+      click_on "Add to Event"
+
+      select @event.title
+      click_on "Add Collection"
+
+      expect(page).to have_content "Collection was added to your event"
+
+      visit event_path(@event)
+
+      expect(page).to have_content @collection.title
+    end
+  end
 end

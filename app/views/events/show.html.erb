@@ -1,1 +1,7 @@
 <%= @event.title %>
+
+<% @event.collections.each do |collection| %>
+  <p>
+    <%= link_to collection.title, collection_path(collection) %>
+  </p>
+<% end %>

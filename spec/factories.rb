@@ -1,7 +1,15 @@
 FactoryGirl.define do
 
   factory :event do
-
+    start_time Date.today + 1.day
+    end_time Date.today + 3.days
+    title "My New Hackathon"
+    street_1 "66 Kenzel Ave"
+    street_2 "Apt 2"
+    city "Nutley"
+    state "NJ"
+    country "United States"
+    postal_code "07110"
   end
 
   factory :live_page do
