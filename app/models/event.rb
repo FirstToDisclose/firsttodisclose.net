@@ -3,6 +3,8 @@ class Event < ActiveRecord::Base
   has_many :collections, through: :event_collections
   has_many :innovations, through: :collections
   belongs_to :user
+  has_many :event_memberships
+  has_many :users, through: :event_memberships
 
   after_create :make_collection
 
@@ -16,5 +18,9 @@ class Event < ActiveRecord::Base
 
   def make_collection
     self.collections.create(title: self.title, user: self.user)
+  end
+
+  def members
+    event_memberships.map { |em| em.user }
   end
 end

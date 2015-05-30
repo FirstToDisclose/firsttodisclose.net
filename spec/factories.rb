@@ -1,5 +1,10 @@
 FactoryGirl.define do
 
+  factory :event_membership do
+    event
+    user
+  end
+
   factory :event do
     start_time Date.today + 1.day
     end_time Date.today + 3.days
@@ -10,6 +15,7 @@ FactoryGirl.define do
     state "NJ"
     country "United States"
     postal_code "07110"
+    user
   end
 
   factory :live_page do

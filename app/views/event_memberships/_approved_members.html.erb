@@ -1,0 +1,8 @@
+<% @memberships.approved.each do |membership| %>
+  <p>
+    <div>
+      <%= membership.user.email %>
+    </div>
+    <%= link_to "Remove Member", event_membership_path(membership), method: :put %>
+  </p>
+<% end %>

@@ -1,0 +1,8 @@
+<% @memberships.unapproved.each do |membership| %>
+  <p>
+    <div>
+      <%= membership.user.email %>
+    </div>
+    <%= link_to "Approve Membership Request", event_membership_path(membership, event_id: membership.event.id), method: :put %>
+  </p>
+<% end %>

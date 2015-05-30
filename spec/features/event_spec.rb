@@ -60,4 +60,32 @@ describe "Events" do
       expect(page).to have_content @event.title
     end
   end
+
+  describe "adding members" do
+    before(:each) do
+      @user = FactoryGirl.create(:user)
+      @event = FactoryGirl.create(:event)
+    end
+
+    it "can be requested by a user" do
+      login_as(@user)
+
+      visit event_path(@event)
+      click_on "Join this Event"
+
+      expect(page).to have_content "Request sent. Your membership will be official once the event's owner approves it."
+    end
+
+    it "must be approved by an event owner" do
+      event_membership = FactoryGirl.create(:event_membership, event: @event, user: @user)
+      login_as(@event.user)
+
+      visit event_memberships_path({ event_id: @event.id })
+      click_on "Approve Membership Request"
+      expect(page).to have_content "Membership Status Updated"
+
+      visit event_path(@event)
+      expect(page).to have_content @user.email
+    end
+  end
 end
