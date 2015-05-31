@@ -5,6 +5,7 @@ class Event < ActiveRecord::Base
   belongs_to :user
   has_many :event_memberships
   has_many :users, through: :event_memberships
+  has_many :teams
 
   after_create :make_collection
 

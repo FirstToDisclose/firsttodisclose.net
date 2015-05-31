@@ -11,7 +11,10 @@ Rails.application.routes.draw do
   resources :events, only: [:new, :create, :show, :index] do
     resources :collections, only: [:new, :create]
     resources :event_memberships, only: :create
+    resources :teams, only: [:new, :create]
   end
+
+  resources :teams, only: :show
 
   resources :event_memberships, only: [:index, :update]
 

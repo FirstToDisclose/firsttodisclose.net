@@ -4,6 +4,8 @@
 
 <%= link_to "Join this Event", event_event_memberships_path(@event), method: :post %>
 
+<%= link_to "Start a Team", new_event_team_path(@event) %>
+
 <% if @event.collections.any? %>
   <%= render "collections" %>
 <% end %>

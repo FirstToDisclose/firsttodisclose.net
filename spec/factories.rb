@@ -1,5 +1,8 @@
 FactoryGirl.define do
 
+  factory :team do
+  end
+
   factory :event_membership do
     event
     user

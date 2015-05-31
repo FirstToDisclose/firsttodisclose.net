@@ -1,0 +1,6 @@
+<%= form_for [@event, @team] do |f| %>
+  <%= f.label :name, "Team name" %>
+  <%= f.text_field :name %>
+
+  <%= f.submit "Create Team" %>
+<% end %>
