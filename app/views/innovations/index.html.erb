@@ -10,10 +10,19 @@
 
 <% if !@innovations.blank? %>
   <% @innovations.each do |innovation| %>
-    <h2><%= link_to innovation.title, innovation_path(innovation) %></h2>
-    <blockquote><%= innovation.abstract %></blockquote>
-    <p><%= innovation.body %></p>
-    <hr/>
+    <div class="col-sm-4 innovationDisplayTile">
+      <div class="panel panel-primary">
+                <div class="panel-heading"><h2 class="panel-title"><%= link_to innovation.title, innovation_path(innovation) %></h2></div>
+                <div class="panel-body">
+                  <p><%= innovation.abstract %></p>
+
+                </div>
+            </div>
+
+      
+    </div>
+    
+    
   <% end %>
 <% else %>
   <p>Sorry, there were no innovations found</p>
