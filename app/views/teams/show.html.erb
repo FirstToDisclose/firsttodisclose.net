@@ -1,3 +1,5 @@
 <h2><%= @team.name %></h2>
 
+<%= link_to "Join Team", teammates_path({ team_id: @team.id }), method: :post %>
+
 <%= render "teammates" %>

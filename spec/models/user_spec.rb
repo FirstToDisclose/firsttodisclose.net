@@ -16,6 +16,7 @@ RSpec.describe User, type: :model do
     it { should have_many :collections }
     it { should have_many :revisions }
     it { should have_many :events }
+    it { should have_many :teammates }
   end
 
 end

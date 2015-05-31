@@ -1,6 +1,13 @@
 FactoryGirl.define do
 
+  factory :teammate do
+
+  end
+
   factory :team do
+    name "Mongooses"
+    user
+    event
   end
 
   factory :event_membership do

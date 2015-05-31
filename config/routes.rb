@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   end
 
   resources :teams, only: :show
+  resources :teammates, only: [:create]
 
   resources :event_memberships, only: [:index, :update]
 
