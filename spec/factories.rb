@@ -1,7 +1,9 @@
 FactoryGirl.define do
 
   factory :teammate do
-
+    approved false
+    user
+    team
   end
 
   factory :team do

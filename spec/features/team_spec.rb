@@ -22,15 +22,36 @@ describe "Teams" do
   end
 
   describe "joining a team" do
-    it "can be requested from the team page" do
-      team = FactoryGirl.create(:team, user: @team_leader, event: @event)
-      user = FactoryGirl.create(:user)
-      login_as(user)
+    before(:each) do
+      @team_leader = FactoryGirl.create(:user)
+      @event = FactoryGirl.create(:event)
+      EventMembership.create(event: @event, user: @team_leader)
+      @team = FactoryGirl.create(:team, user: @team_leader, event: @event)
+      @user = FactoryGirl.create(:user)
+    end
 
-      visit team_path(team)
+    it "can be requested from the team page" do
+      login_as(@user)
+
+      visit team_path(@team)
       click_on "Join Team"
 
       expect(page).to have_content "Team membership requested. Your membership will be official once approved by the team leader"
+    end
+
+    it "must be approved by the team creator" do
+      teammate = FactoryGirl.create(:teammate, user: @user, team: @team)
+      login_as(@team_leader)
+
+      visit team_path(@team)
+      click_on "Approve New Members"
+
+      expect(page).to have_content teammate.user.email
+
+      click_on "Approve Teammate"
+
+      expect(page).to have_content "Teammate approved"
+      expect(page).to have_content teammate.user.email
     end
   end
 end

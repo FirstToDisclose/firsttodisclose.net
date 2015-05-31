@@ -1,0 +1,7 @@
+<% @team.teammates.approved.each do |teammate| %>
+  <p>
+    <div>
+      <%= teammate.user.email %>
+    </div>
+  </p>
+<% end %>

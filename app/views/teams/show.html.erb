@@ -2,4 +2,6 @@
 
 <%= link_to "Join Team", teammates_path({ team_id: @team.id }), method: :post %>
 
+<%= link_to "Approve New Members", teammates_path( { team_id: @team.id }) %>
+
 <%= render "teammates" %>

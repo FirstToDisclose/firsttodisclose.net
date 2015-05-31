@@ -11,4 +11,19 @@ class TeammatesController < ApplicationController
       render @team
     end
   end
+
+  def index
+    @team = Team.find(params[:team_id])
+    @teammates = @team.teammates
+  end
+
+  def update
+    @teammate = Teammate.find(params[:id])
+    if @teammate.update(approved: !@teammate.approved)
+      flash[:notice] = "Teammate approved"
+      redirect_to team_path(@teammate.team)
+    else
+      render @teammate.team
+    end
+  end
 end

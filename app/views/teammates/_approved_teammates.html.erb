@@ -1,0 +1,8 @@
+<% @teammates.approved.each do |teammate| %>
+  <p>
+    <div>
+      <%= teammate.user.email %>
+    </div>
+    <%= link_to "Remove Teammate", teammate_path(teammate), method: :put %>
+  </p>
+<% end %>
