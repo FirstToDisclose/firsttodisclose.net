@@ -133,3 +133,34 @@ div.tagsinput div { display:block; float: left; }
   overflow:hidden;
   margin-bottom: 50px;
 }
+
+/* front page*/
+.home_image {
+  height: 200px;
+  width: 200px;
+  display: block;
+  margin: 0 auto;
+}
+
+.home_header {
+  text-align: center;
+}
+
+#main_home_header {
+  margin-bottom: 70px;
+  font-size: 70px;
+}
+
+.home_button {
+  margin-bottom: 50px;
+}
+
+#main_home_wrapper {
+  
+}
+
+.button_center {
+  margin: 30px auto;
+  display: block;
+  width: 200px;
+}
