@@ -1,4 +1,5 @@
-<%= form_for @innovation, :html=> {:id => 'innovation_form'} do |f| %>
+<%= form_for @innovation, :html=> {:id => 'innovation_form', :class => "well"} do |f| %>
+
   <% if @innovation.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@innovation.errors.count, "error") %> prohibited this innovation from being saved:</h2>
@@ -40,6 +41,7 @@
   <div class="actions">
     <%= f.submit id: "innovation_form_submit"%>
   </div>
+
 <% end %>
 
 <script>
