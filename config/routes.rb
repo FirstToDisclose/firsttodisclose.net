@@ -38,9 +38,8 @@ Rails.application.routes.draw do
 
   end
 
-  #agreement to site-wide consent
-
-  #redirect to consent form
+  get 'new_innovation' => 'innovations#new'
+  get 'innovations' => 'innovations#index'
 
 
 end

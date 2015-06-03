@@ -1,36 +1,31 @@
-<h1>Disclose your inventions and innovations</h1>
+<div id="main_home_wrapper">
+<h1 class="home_header" id="main_home_header">Disclose your inventions and innovations</h1>
+<div class="row">
+  <div class="col-sm-6 home_button">
+    
+    <%= image_tag('light-bulb', class: "home_image")%>
 
-<p>
-  <a href="http://firsttodisclose.net/">FirstToDisclose.net</a> is a
+    <%= link_to "Share", new_innovation_path, class: "btn btn-danger btn-raised button_center" %>
+  </div>
+  <div class="col-sm-6 home_button">
+    <%= image_tag('magnifying_glass', class: "home_image") %>
+    <%= link_to "Search", innovations_path, class: "btn btn-danger btn-raised button_center" %>
+  </div>
+</div>
+<div class="row">
+  <p>FirstToDisclose.net</a> is a
   community-powered online repository for inventors to
   disclose their inventions and other innovations to the public.
   The use of
   FirstToDisclose.net may help prevent another person or
   entity from claiming patent protection on your
-  idea.
+  idea.</p>
 
-  While we understand and fully support the
+  <p>While we understand and fully support the
   commercialization of intellectual property in our
   information economy, we also applaud those who are
   willing to make their innovations open to the public
-  without charge.
-</p>
+  without charge.</p>
+</div>
 
-<%= image_tag "5258264961_27fb3cfea6_m.jpg" %>
-
-
-<p>
-  This is a prototype implementation should be considered a work in
-  progress.
-  For more information or to help out with the project
-  see <a href="http://law.mit.edu/firsttodisclose">law.mit.edu/firsttodisclose</a>.
-</p>
-
-<p>
-  For more information
-  see <a href="http://firsttodisclose.info/">firsttodisclose.info</a>
-</p>
-
-<h1>Support your hackathon</h1>
-
-<%= image_tag "3265063956_a74c4873ef_o.jpg", :class => 'welcome_banner' %>
+</div>
