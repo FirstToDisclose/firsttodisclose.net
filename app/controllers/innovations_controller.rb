@@ -8,7 +8,7 @@ class InnovationsController < ApplicationController
 
   # GET /innovations
   def index
-    @innovations = Innovation.visible
+    @innovations = Innovation.visible.paginate(:page => params[:page], :per_page => 20)
   end
 
   # GET /innovations/1

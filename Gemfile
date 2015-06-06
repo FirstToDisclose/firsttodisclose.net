@@ -31,6 +31,8 @@ gem 'omniauth-github', '~> 1.1'
 gem 'omniauth-google-oauth2', '~> 0.2'
 gem 'omniauth-mit', '0.9.1', :github => 'FirstToDisclose/omniauth-mit'
 
+#pagination 
+gem 'will_paginate'
 # environments
 gem 'figaro', '~> 1.1'
 

@@ -28,4 +28,5 @@
   <p>Sorry, there were no innovations found</p>
 <% end %>
 
-<%= link_to 'New Innovation', new_innovation_path %>
+<%= link_to 'New Innovation', new_innovation_path, :class => "displayOnOwnLine" %>
+<%= will_paginate @innovations, :id => "paginationLinks" %>

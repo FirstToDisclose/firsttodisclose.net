@@ -165,3 +165,14 @@ div.tagsinput div { display:block; float: left; }
   width: 200px;
 }
 
+a.displayOnOwnLine {
+  display: block;
+}
+
+#paginationLinks {
+  display: block;
+  clear: both;
+  margin: 0 auto;
+  text-align: center;
+}
+
