@@ -8,7 +8,7 @@ class InnovationsController < ApplicationController
 
   # GET /innovations
   def index
-    if params[:search]
+    if !params[:search].blank?
       @innovations = search_innovations
     else
       @innovations = Innovation.visible.paginate(:page => params[:page], :per_page => 20)

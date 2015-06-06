@@ -22,10 +22,10 @@ describe "Search" do
       expect(page).to have_content "Sorry, there were no innovations found"
     end
 
-    it "returns no results for a blank query" do
+    it "returns all results for a blank query" do
       click_on "Search"
 
-      expect(page).to have_content "Sorry, there were no innovations found"
+      expect(page).to have_content @innovation.title
     end
   end
 end
