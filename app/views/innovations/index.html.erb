@@ -1,6 +1,6 @@
 <h1>Listing Innovations</h1>
 
-<%= form_tag "/search", method: :get, class: "navbar-form" do %>
+<%= form_tag "/innovations", method: :get, class: "navbar-form" do %>
   <div class="form-group">
     <%= text_field_tag :search %>
   </div>
@@ -19,15 +19,15 @@
                 </div>
             </div>
 
-      
+
     </div>
-    
-    
+
+
   <% end %>
+  <%= will_paginate @innovations, :id => "paginationLinks" %>
 <% else %>
   <p>Sorry, there were no innovations found</p>
 <% end %>
 
 <%= link_to 'New Innovation', new_innovation_path, :class => "displayOnOwnLine" %>
-<%= will_paginate @innovations, :id => "paginationLinks" %>
 <!-- git -->
