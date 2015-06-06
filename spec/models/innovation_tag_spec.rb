@@ -12,5 +12,6 @@ describe InnovationTag do
   describe "associations" do
     it { should belong_to :innovation }
     it { should belong_to :tag }
+    it { should belong_to :tag_set }
   end
 end
