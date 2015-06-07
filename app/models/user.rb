@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   def self.create_user_from_oauth(auth)
     user = User.new(
       name: auth.extra.raw_info.name,
-      email: email,
+      email: auth.info.email,
       password: Devise.friendly_token[0,20]
     )
     user.save!
