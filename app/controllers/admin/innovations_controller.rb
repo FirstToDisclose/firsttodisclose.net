@@ -1,4 +1,6 @@
 class Admin::InnovationsController < ApplicationController
+  before_filter :verify_admin
+
   def index
     @innovations = Innovation.all
   end
@@ -19,6 +21,14 @@ class Admin::InnovationsController < ApplicationController
       redirect_to admin_innovation_path(@innovation)
     else
       render admin_innovation_path(@innovation)
+    end
+  end
+
+  private
+
+  def verify_admin
+    if !current_user.admin?
+      redirect_to root_path
     end
   end
 end

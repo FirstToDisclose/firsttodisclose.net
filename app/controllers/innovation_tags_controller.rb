@@ -32,7 +32,7 @@ class InnovationTagsController < ApplicationController
 
   def verify_admin
     if !current_user.admin?
-      redirect_to @innovation
+      redirect_to innovations_path
     end
   end
 end
