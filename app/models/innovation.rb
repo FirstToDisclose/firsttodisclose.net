@@ -13,18 +13,28 @@ class Innovation < ActiveRecord::Base
   validates :body, presence: true, length: { minimum: 250, maximum: 10_000 }
   validates :consented, presence: true
 
-  def create_tags(params)
-    tags = params[:innovation][:innovation_tags].split(",")
+  def create_tags(params, tag_set)
+    tags = params.split(",")
+    if tag_set.title == "FirstToDisclose"
+      tag_set.innovation_tags.destroy_all # Update official list
+    end
     # Create tag and Innovation tag
-    self.innovation_tags.destroy_all
     tags.each do |tag_name|
       tag = Tag.find_or_create_by(name: tag_name)
-      innovation_tag = self.innovation_tags.create(tag: tag)
+      innovation_tag = self.innovation_tags.find_or_create_by(tag: tag, tag_set: tag_set)
       if !tag.save || !innovation_tag.save
         return false
       end
     end
     true
+  end
+
+  def official_tags
+    innovation_tags.select { |it| it.tag_set.official? }.map { |it| it.tag }
+  end
+
+  def unofficial_tags
+    innovation_tags.select { |it| it.tag_set.community? }.map { |it| it.tag }
   end
 
   def belongs_to_collection?(collection)

@@ -5,6 +5,8 @@ describe "Innovations" do
     before(:each) do
       user = FactoryGirl.create(:user)
       sign_in(user)
+      TagSet.create(title: "Community")
+      TagSet.create(title: "FirstToDisclose")
     end
 
     it "accepts valid attributes" do
