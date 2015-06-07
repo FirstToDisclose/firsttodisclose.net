@@ -21,15 +21,15 @@
 
   <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_field :title, :class => 'form-control' %>
+    <%= f.text_field :title, :class => 'form-control', placeholder: "Your Title" %>
   </div>
   <div class="field">
     <%= f.label :abstract %><br>
-    <%= f.text_area :abstract, :class => 'form-control' %>
+    <%= f.text_area :abstract, :class => 'form-control', placeholder: "Your abstract should be at least 140 and at most 1,000 characters" %>
   </div>
   <div class="field">
     <%= f.label :body %><br>
-    <%= f.text_area :body, :class => 'form-control' %>
+    <%= f.text_area :body, :class => 'form-control', placeholder: "The body of your innovation can be as long as 10,000 characters" %>
   </div>
 
   <%= f.hidden_field :innovation_tags, id: "hidden-tag-field" %>

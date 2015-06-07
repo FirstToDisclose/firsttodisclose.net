@@ -6,6 +6,7 @@ describe "Revisions" do
       user = FactoryGirl.create(:user)
       sign_in(user)
       @innovation = FactoryGirl.create(:innovation, user: user)
+      TagSet.create(title: "FirstToDisclose")
       @title = @innovation.title
       @abstract = @innovation.abstract
       @body = @innovation.body
