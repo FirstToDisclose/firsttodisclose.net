@@ -46,14 +46,14 @@ describe "Revisions" do
       click_on "View Revision History"
 
       expect(page).to have_link @innovation.title
-      expect(page).to have_link "#{@revision_1.title} - #{@revision_1.created_at}"
-      expect(page).to have_link "#{@revision_2.title} - #{@revision_2.created_at}"
+      expect(page).to have_link "#{@revision_1.title}"
+      expect(page).to have_link "#{@revision_2.title}"
     end
 
     it "should display an individual revision" do
       visit revisions_path({ innovation_id: @innovation.id })
 
-      click_on "#{@revision_1.title} - #{@revision_1.created_at}"
+      click_on "#{@revision_1.title}"
 
       expect(page).to have_link @innovation.title
       expect(page).to have_content @revision_1.title
