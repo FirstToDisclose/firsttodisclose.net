@@ -24,7 +24,7 @@
 <% end %>
 
 <p>
-  <% if current_user && current_user.id == @innovation.user_id %>
+  <% if signed_in? && (current_user == @innovation.user || current_user.admin?) %>
     <%= link_to 'Edit', edit_innovation_path(@innovation) %> |
   <% end %>
   <%= link_to 'Back', innovations_path %>
