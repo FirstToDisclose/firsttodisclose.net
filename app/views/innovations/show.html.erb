@@ -30,6 +30,10 @@
   <%= link_to 'Back', innovations_path %>
 </p>
 
+<% if signed_in? %>
+  <%= render "/innovations/tag_form" %>
+<% end %>
+
 
 
 <% if @innovation.reviews.any? %>

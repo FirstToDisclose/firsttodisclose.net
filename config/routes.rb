@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :innovations do
     resources :reviews, only: [:new, :create]
+    resources :innovation_tags, only: :create
   end
 
   namespace :api do

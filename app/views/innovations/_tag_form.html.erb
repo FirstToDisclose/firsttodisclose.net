@@ -1,0 +1,39 @@
+<%= form_tag(innovation_innovation_tags_path(@innovation), method: :post, id: 'innovation_form', class: "well") do %>
+
+  <%= hidden_field_tag :innovation_tags, nil, {id: "hidden-tag-field"} %>
+
+  <input id="tags">
+
+  <div class="actions">
+    <%= submit_tag "Add Tags", id: "innovation_form_submit"%>
+  </div>
+
+<% end %>
+
+<script>
+
+// Helper function for updating value of tags
+function updateTagList(){
+  var taglist = $('#tags').tagsinput('items');
+  // Set hidden field's value attribute
+  $('#hidden-tag-field').val(taglist);
+}
+
+
+$('#tags').on('itemRemoved', function() {
+  updateTagList();
+});
+
+$(function() {
+  $("#tags").tagsinput({
+    confirmKeys: [13, 9]
+  })
+});
+
+$("#innovation_form_submit").click(function(e){
+  e.preventDefault();
+  updateTagList();
+  $("#innovation_form").submit();
+});
+
+</script>
