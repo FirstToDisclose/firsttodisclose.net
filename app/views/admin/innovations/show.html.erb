@@ -25,7 +25,12 @@
 <% if @innovation.tags.any? %>
   <h3>Tags:</h3>
   <% @innovation.tags.each do |tag| %>
-    <div><%= link_to tag.name, tag_path(tag) %></div>
+    <div>
+      <span><%= link_to tag.name, tag_path(tag) %> - </span>
+      <span><%= link_to "Remove tag",
+        innovation_tag_path(InnovationTag.find_by(innovation: @innovation, tag: tag)),
+        method: :delete %></span>
+    </div>
   <% end %>
 <% end %>
 
