@@ -75,7 +75,6 @@ class Innovation < ActiveRecord::Base
                              abstract: abstract,
                              body: body,
                              consented: consented,
-                             user: user,
                              innovation: self)
   end
 

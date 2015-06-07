@@ -3,7 +3,8 @@
 <ol>
   <% @revisions.each do |revision| %>
     <li>
-      <h2><%= link_to "#{revision.title} - #{revision.created_at}", revision_path(revision) %></h2>
+      <h2><%= link_to "#{revision.title}", revision_path(revision) %></h2>
+      <div><%= "#{revision.created_at} by #{revision.user.email}" %></div>
       <hr/>
     </li>
   <% end %>

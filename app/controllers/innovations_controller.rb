@@ -81,7 +81,8 @@ class InnovationsController < ApplicationController
   end
 
   def clone_innovation
-    @innovation.clone
+    @revision = @innovation.clone
+    @revision.update(user: current_user)
   end
 
   def check_ownership

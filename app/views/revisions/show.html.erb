@@ -2,7 +2,7 @@
 
 <h3><%= @revision.title %></h3>
 
-<p>Revised at: <%= @revision.created_at %></p>
+<p>Revised at: <%= @revision.created_at %> by: <%= @revision.user.email %></p>
 
 <h3>Abstract:</h3>
 <%= @markdown_abstract %>
