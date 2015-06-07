@@ -5,6 +5,7 @@ class InnovationsController < ApplicationController
   before_action :check_if_hidden, only: [:show]
   before_filter :check_privileges!, only: [:new, :create, :edit, :save]
   before_filter :accepted_terms, only: [:new, :create]
+  before_filter :set_tag_set, only: [:create, :update]
 
   # GET /innovations
   def index
@@ -35,7 +36,7 @@ class InnovationsController < ApplicationController
   # POST /innovations
   def create
     @innovation = current_user.innovations.new(innovation_params)
-    if @innovation.save && @innovation.create_tags(params[:innovation][:innovation_tags], get_tag_set)
+    if @innovation.save && @innovation.create_tags(params[:innovation][:innovation_tags], @tag_set)
       redirect_to @innovation, notice: 'Innovation was successfully created.'
     else
       render :new
@@ -44,7 +45,7 @@ class InnovationsController < ApplicationController
 
   # PATCH/PUT /innovations/1
   def update
-    if @innovation.update(innovation_params) && @innovation.create_tags(params[:innovation][:innovation_tags], get_tag_set)
+    if @innovation.update(innovation_params) && @innovation.create_tags(params[:innovation][:innovation_tags], @tag_set)
       redirect_to @innovation, notice: 'innovation was successfully updated.'
     else
       render :edit
@@ -105,7 +106,7 @@ class InnovationsController < ApplicationController
     end
   end
 
-  def get_tag_set
-    TagSet.find_by(title: "FirstToDisclose")
+  def set_tag_set
+    @tag_set = TagSet.find_by(title: "FirstToDisclose")
   end
 end

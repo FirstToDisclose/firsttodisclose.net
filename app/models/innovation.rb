@@ -21,12 +21,20 @@ class Innovation < ActiveRecord::Base
     # Create tag and Innovation tag
     tags.each do |tag_name|
       tag = Tag.find_or_create_by(name: tag_name)
-      innovation_tag = self.innovation_tags.create(tag: tag, tag_set: tag_set)
+      innovation_tag = self.innovation_tags.find_or_create_by(tag: tag, tag_set: tag_set)
       if !tag.save || !innovation_tag.save
         return false
       end
     end
     true
+  end
+
+  def official_tags
+    innovation_tags.select { |it| it.tag_set.official? }.map { |it| it.tag }
+  end
+
+  def unofficial_tags
+    innovation_tags.select { |it| it.tag_set.community? }.map { |it| it.tag }
   end
 
   def belongs_to_collection?(collection)

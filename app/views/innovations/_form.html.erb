@@ -67,9 +67,9 @@ $(function() {
 $('#tags').ready(function() {
   console.log("tags are ready");
   $('#hidden-tag-field').val("")
-  <% @innovation.tags.each do |tag| %>
+  <% @innovation.official_tags.each do |tag| %>
     $('#tags').tagsinput('add', "<%= tag.name %>");
-    
+
   <% end %>
 });
 

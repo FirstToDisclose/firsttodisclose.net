@@ -1,10 +1,10 @@
 class InnovationTagsController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :set_tag_set
 
   def create
     @innovation = Innovation.find(params[:innovation_id])
-    binding.pry
-    if @innovation.create_tags(params[:innovation_tags], get_tag_set)
+    if @innovation.create_tags(params[:innovation_tags], @tag_set)
       flash[:notice] = "Tags Applied"
       redirect_to @innovation
     else
@@ -14,11 +14,7 @@ class InnovationTagsController < ApplicationController
 
   private
 
-  def get_tag_set
-    if current_user.admin? || current_user == @innovation.user
-      TagSet.find_by(title: "FirstToDisclose")
-    else
-      TagSet.find_by(title: "Community")
-    end
+  def set_tag_set
+    @tag_set = TagSet.find_by(title: "Community")
   end
 end
