@@ -1,4 +1,6 @@
 class Api::V1::InnovationsController < ApplicationController
+  include ApplicationHelper
+
   before_action :set_innovation, only: [:show, :edit, :update, :destroy]
   before_action :check_ownership, only: [:edit, :update, :destroy]
   before_action :clone_innovation, only: [:update, :destroy]
@@ -20,11 +22,7 @@ class Api::V1::InnovationsController < ApplicationController
 
   # GET /api/v1/innovations
   def index
-    if !params[:search].blank?
-      @innovations = search_innovations
-    else
-      @innovations = Innovation.visible.paginate(:page => params[:page], :per_page => 20)
-    end
+    @innovations = get_innovations(params)
     render json: @innovations
   end
 
@@ -86,14 +84,4 @@ class Api::V1::InnovationsController < ApplicationController
       render json: { error: "Innovation is under review by site administrators" }.to_json
     end
   end
-
-  def search_innovations
-    search_return = Innovation.visible.basic_search(params[:search])
-    if search_return == []
-      @innovations = nil
-    else
-      @innovations = search_return.paginate(:page => params[:page], :per_page => 20)
-    end
-  end
-
 end

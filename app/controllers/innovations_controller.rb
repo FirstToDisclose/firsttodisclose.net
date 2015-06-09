@@ -1,4 +1,6 @@
 class InnovationsController < ApplicationController
+  include ApplicationHelper
+
   before_action :set_innovation, only: [:show, :edit, :update, :destroy]
   before_action :check_ownership, only: [:edit, :update, :destroy]
   before_action :clone_innovation, only: [:update, :destroy]
@@ -9,11 +11,7 @@ class InnovationsController < ApplicationController
 
   # GET /innovations
   def index
-    if !params[:search].blank?
-      @innovations = search_innovations
-    else
-      @innovations = Innovation.visible.paginate(:page => params[:page], :per_page => 20)
-    end
+    @innovations = get_innovations(params)
   end
 
   # GET /innovations/1
@@ -95,15 +93,6 @@ class InnovationsController < ApplicationController
   def check_if_hidden
     if @innovation.hidden?
       render "innovations/hidden"
-    end
-  end
-
-  def search_innovations
-    search_return = Innovation.visible.basic_search(params[:search])
-    if search_return == []
-      @innovations = nil
-    else
-      @innovations = search_return.paginate(:page => params[:page], :per_page => 20)
     end
   end
 
