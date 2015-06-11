@@ -15,7 +15,7 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
-//= require material
+//= require material.min
 
 
  $.material.init();
