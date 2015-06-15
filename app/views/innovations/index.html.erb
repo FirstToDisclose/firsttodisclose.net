@@ -12,17 +12,12 @@
   <% @innovations.each do |innovation| %>
     <div class="col-sm-4">
       <div class="panel panel-primary innovationDisplayTile">
-                <div class="panel-heading"><h2 class="panel-title"><%= link_to innovation.title, innovation_path(innovation) %></h2></div>
-                <div class="panel-body">
-                  <p><%= innovation.abstract %></p>
-
-                </div>
-            </div>
-
-
+        <div class="panel-heading"><h2 class="panel-title"><%= link_to innovation.title, innovation_path(innovation) %></h2></div>
+        <div class="panel-body">
+          <p><%= innovation.abstract %></p>
+        </div>
+      </div>
     </div>
-
-
   <% end %>
   <%= will_paginate @innovations, :id => "paginationLinks" %>
 <% else %>
