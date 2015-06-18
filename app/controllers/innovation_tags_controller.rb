@@ -5,7 +5,8 @@ class InnovationTagsController < ApplicationController
 
   def create
     @innovation = Innovation.find(params[:innovation_id])
-    if @innovation.create_tags(params[:innovation_tags], @tag_set)
+    if @innovation.create_tags(params[:innovation_tags],
+                               @tag_set, current_user)
       flash[:notice] = "Tags Applied"
       redirect_to @innovation
     else

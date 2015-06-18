@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   has_many :innovations
+  has_many :innovation_tags
   has_many :collections
   has_many :reviews
   has_many :revisions
@@ -47,4 +48,14 @@ class User < ActiveRecord::Base
     self.admin
   end
 
+  def tagged_innovations
+    innovation_tags.map { |innovation_tag| innovation_tag.innovation }.uniq
+  end
+
+  def tags_for_innovation(innovation)
+    tags = innovation_tags.where(innovation: innovation).map do |innovation_tag|
+      innovation_tag.tag
+    end
+    tags.uniq
+  end
 end

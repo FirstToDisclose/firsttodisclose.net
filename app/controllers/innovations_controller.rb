@@ -34,7 +34,8 @@ class InnovationsController < ApplicationController
   # POST /innovations
   def create
     @innovation = current_user.innovations.new(innovation_params)
-    if @innovation.save && @innovation.create_tags(params[:innovation][:innovation_tags], @tag_set)
+    if @innovation.save && @innovation.create_tags(params[:innovation][:innovation_tags],
+                                                   @tag_set, current_user)
       redirect_to @innovation, notice: 'Innovation was successfully created.'
     else
       render :new
@@ -43,7 +44,8 @@ class InnovationsController < ApplicationController
 
   # PATCH/PUT /innovations/1
   def update
-    if @innovation.update(innovation_params) && @innovation.create_tags(params[:innovation][:innovation_tags], @tag_set)
+    if @innovation.update(innovation_params) && @innovation.create_tags(params[:innovation][:innovation_tags],
+                                                                        @tag_set, current_user)
       redirect_to @innovation, notice: 'innovation was successfully updated.'
     else
       render :edit
