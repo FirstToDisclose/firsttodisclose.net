@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   has_many :innovations
+  has_many :innovation_tags
   has_many :collections
   has_many :reviews
   has_many :revisions

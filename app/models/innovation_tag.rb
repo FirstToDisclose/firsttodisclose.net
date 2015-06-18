@@ -5,4 +5,5 @@ class InnovationTag < ActiveRecord::Base
   belongs_to :tag
   belongs_to :innovation
   belongs_to :tag_set
+  belongs_to :user
 end

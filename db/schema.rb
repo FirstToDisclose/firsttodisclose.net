@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150606181334) do
+ActiveRecord::Schema.define(version: 20150618033726) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,19 @@ ActiveRecord::Schema.define(version: 20150606181334) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "event_collections", force: :cascade do |t|
+    t.integer "event_id"
+    t.integer "collection_id"
+  end
+
+  create_table "event_memberships", force: :cascade do |t|
+    t.boolean  "approved",   default: false
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "events", force: :cascade do |t|
@@ -54,6 +67,7 @@ ActiveRecord::Schema.define(version: 20150606181334) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "tag_set_id"
+    t.integer  "user_id"
   end
 
   create_table "innovations", force: :cascade do |t|
@@ -112,6 +126,22 @@ ActiveRecord::Schema.define(version: 20150606181334) do
     t.string   "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "teammates", force: :cascade do |t|
+    t.boolean  "approved",   default: false
+    t.integer  "user_id"
+    t.integer  "team_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "event_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

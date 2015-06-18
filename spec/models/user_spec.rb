@@ -10,7 +10,7 @@ RSpec.describe User, type: :model do
   end
 
   describe "associations" do
-    xit { should have_many :innovation_tags }
+    it { should have_many :innovation_tags }
     it { should have_many :innovations }
     it { should have_many :reviews }
     it { should have_many :collections }
