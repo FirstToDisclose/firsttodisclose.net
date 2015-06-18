@@ -1,12 +1,43 @@
-<h1><%= !@user.name.blank? ? @user.name : @user.email %>'s Innovations</h1>
+<h1><%= !@user.name.blank? ? @user.name : @user.email %></h1>
 
-<% @user.innovations.each do |innovation| %>
-  <div class="col-sm-4">
-    <div class="panel panel-primary innovationDisplayTile">
-      <div class="panel-heading"><h2 class="panel-title"><%= link_to innovation.title, innovation_path(innovation) %></h2></div>
-      <div class="panel-body">
-        <p><%= innovation.abstract %></p>
+<% if @user.innovations.any? %>
+  <div class="col-sm-12">
+    <h2><%= !@user.name.blank? ? @user.name : @user.email %>'s Innovations</h2>
+    <% @user.innovations.each do |innovation| %>
+      <div class="col-sm-4">
+        <div class="panel panel-primary innovationDisplayTile">
+          <div class="panel-heading">
+            <h2 class="panel-title"><%= link_to innovation.title,
+                                        innovation_path(innovation) %></h2>
+          </div>
+          <div class="panel-body">
+            <p><%= innovation.abstract %></p>
+          </div>
+        </div>
       </div>
-    </div>
+    <% end %>
+  </div>
+<% end %>
+
+<% if @user.tagged_innovations.any? %>
+  <div class="col-sm-12">
+    <h2>Tags by <%= !@user.name.blank? ? @user.name : @user.email %></h2>
+    <% @user.tagged_innovations.each do |innovation| %>
+      <div class="col-sm-4">
+        <div class="panel panel-primary innovationTagDisplayTile">
+          <div class="panel-heading">
+            <h2 class="panel-title"><%= link_to innovation.title,
+                                        innovation_path(innovation) %>
+            </h2>
+          </div>
+          <div class="panel-body">
+            <% @user.tags_for_innovation(innovation).each do |tag| %>
+              <p><%= link_to tag.name,
+                     tag_path(tag) %></p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
 <% end %>

@@ -25,5 +25,15 @@ describe "Users" do
 
       expect(page).to have_link @innovation.title
     end
+
+    it "displays a user's innovation_tags" do
+      tag = FactoryGirl.create(:tag)
+      FactoryGirl.create(:innovation_tag, innovation: @innovation,
+                         tag: tag, user: @user)
+
+      visit user_path(@user)
+
+      expect(page).to have_link tag.name
+    end
   end
 end
