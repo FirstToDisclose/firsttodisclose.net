@@ -7,26 +7,20 @@
 <div class="collection-innovations">
   <h3>Innovations</h3>
   <% @collection.innovations.each do |innovation| %>
-    <div>
-      <%= link_to innovation.title, innovation_path(innovation) %>
-
-
-<div class="g-hangout" data-render="createhangout"
-     data-hangout_type="onair"
-     data-invites="[
-{'id': '104633805161015395707', 'invite_type': 'PROFILE'},
-{'id': '111909089980306811721', 'invite_type': 'PROFILE'},
-{'id': '114073752629425589852', 'invite_type': 'PROFILE'}
-  ]"
-    data-initial_apps="[
-{app_id : '41703727273', start_data :'dQw4w9WgXcQ', 'app_type': 'ROOM_APP'}
-{'app_id' : '184219133185', 'start_data' : 'dQw4w9WgXcQ', 'app_type' : 'ROOM_APP' }
-]"
-     data-topic="<%= @collection.title %>: <%= innovation.title %>: Discussion"
-     >
-</div>
-
+  <p>
+    <div class="g-hangout" data-render="createhangout"
+         data-hangout_type="onair"
+         data-invites="[
+                       {'id': '114073752629425589852', 'invite_type': 'PROFILE'}
+                       ]"
+         data-initial_apps="[
+                            {'app_id': '41703727273', start_data:'dQw4w9WgXcQ', 'app_type': 'ROOM_APP'}
+                            {'app_id': '184219133185', 'start_data': 'dQw4w9WgXcQ', 'app_type': 'ROOM_APP' }
+                            ]"
+         data-topic="<%= @collection.title %>: <%= innovation.title %>: Discussion">
     </div>
+    <%= link_to innovation.title, innovation_path(innovation) %>
+  </p>
   <% end %>
 </div>
 
